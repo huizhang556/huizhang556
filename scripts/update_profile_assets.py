@@ -33,9 +33,25 @@ def write_asset(name, content):
     (OUTPUT / name).write_text(content, encoding="utf-8")
 
 
+def get_public_repos():
+    repos = []
+    page = 1
+    while True:
+        batch = get_json(
+            f"https://api.github.com/users/{USERNAME}/repos?per_page=100&type=all&page={page}"
+        )
+        if not batch:
+            break
+        repos.extend(repo for repo in batch if not repo.get("private", False))
+        if len(batch) < 100:
+            break
+        page += 1
+    return repos
+
+
 def main():
     user = get_json(f"https://api.github.com/users/{USERNAME}")
-    repos = get_json(f"https://api.github.com/users/{USERNAME}/repos?per_page=100&type=all")
+    repos = get_public_repos()
     project = get_json(f"https://api.github.com/repos/{USERNAME}/{PROJECT}")
 
     total_stars = sum(repo.get("stargazers_count", 0) for repo in repos)
@@ -45,7 +61,7 @@ def main():
         for language, amount in repo_languages.items():
             languages[language] = languages.get(language, 0) + amount
     top_languages = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
-    language_total = sum(amount for _, amount in top_languages) or 1
+    language_total = sum(languages.values()) or 1
 
     write_asset(
         "hero.svg",

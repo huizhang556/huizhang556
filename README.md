@@ -66,6 +66,22 @@
 	</a>
 </p>
 
+### 3D 贡献图
+
+<p align="center">
+	<a href="https://github.com/huizhang557/huizhang557/tree/main/profile-3d-contrib">
+		<img src="https://raw.githubusercontent.com/huizhang557/huizhang557/main/profile-3d-contrib/profile-green-animate.svg" width="99%" alt="3D 贡献图">
+	</a>
+</p>
+
+### 动态贡献贪吃蛇
+
+<p align="center">
+	<a href="https://github.com/huizhang557/huizhang557/tree/output">
+		<img src="https://raw.githubusercontent.com/huizhang557/huizhang557/output/github-contribution-grid-snake.svg" alt="动态贡献贪吃蛇">
+	</a>
+</p>
+
 ## 联系我
 
 - GitHub：[huizhang557](https://github.com/huizhang557)
