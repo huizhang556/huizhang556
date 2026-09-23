@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-labelledby="title desc">
   <title id="title">贡献活动</title>
-  <desc id="desc">huizhang556 的 GitHub 贡献记录。</desc>
+  <desc id="desc">huizhang556 的 GitHub 贡献记录</desc>
   <defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs>
   <rect width="1200" height="150" rx="28" fill="#FDF8F4"/>
   <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#3C4F66">贡献活动</text>

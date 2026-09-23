@@ -1,32 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
-  <title id="title">vx_data_watch pinned project card</title>
-  <desc id="desc">A light pastel project card for the vx_data_watch repository.</desc>
-  <defs>
-    <style>
-      .sans {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-      }
-    </style>
-  </defs>
-
+  <title id="title">vx_data_watch project card</title>
+  <desc id="desc">Generated project card for the user's featured GitHub repository.</desc>
+  <defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs>
   <rect width="1200" height="220" rx="30" fill="#FDF8F4" stroke="#E9EDF2" stroke-width="1.5"/>
-
-  <text class="sans" x="1110" y="180" font-size="90" font-weight="700" fill="#E9EDF2" text-anchor="end">&lt;/&gt;</text>
   <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#3C4F66">vx_data_watch</text>
   <g transform="translate(400,76)">
     <rect width="130" height="38" rx="19" fill="#E3D4E8"/>
     <circle cx="20" cy="19" r="6" fill="#A97BFF"/>
     <text class="sans" x="34" y="25" font-size="16" font-weight="600" fill="#6B4C75">Python</text>
   </g>
-
-  <!-- stats -->
-  <g transform="translate(940, 64)">
-    <g transform="translate(0, 0)">
-      <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">1</text>
-      <text class="sans" y="26" font-size="14" fill="#8A9CAD">Stars</text>
-    </g>
-    <g transform="translate(90, 0)">
-      <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">1</text>
+  <g transform="translate(940,64)">
+    <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">1</text>
+    <text class="sans" y="26" font-size="14" fill="#8A9CAD">Stars</text>
+    <g transform="translate(90,0)">
+      <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">0</text>
       <text class="sans" y="26" font-size="14" fill="#8A9CAD">Forks</text>
     </g>
   </g>
