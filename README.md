@@ -1,20 +1,20 @@
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="huizhang557 profile welcome banner">
+  <img src="./assets/readme/hero.svg" width="100%" alt="Harry James profile welcome banner">
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=500&size=24&pause=1000&color=6B7F90&center=true&vCenter=true&width=800&lines=C%2B%2B%2FQt+Developer;5+Years+of+Experience;Python+also+in+use" alt="typing tagline">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=500&size=24&pause=1000&color=6B7F90&center=true&vCenter=true&width=800&lines=Harry+James;C%2B%2B%2FQt+Developer;5+Years+Experience" alt="typing tagline">
 </p>
 
 ## 关于我
 
-我是 **Harry James**，一名拥有 5 年工作经验的 C++/Qt 程序员。主流使用语言是 C++，同时也会 Python。
+我是 **Harry James**，一名拥有 6 年工作经验的 C++/Qt 程序员。
 
 - 主要方向：C++ / Qt 桌面应用开发
 - 擅长：界面开发、业务逻辑封装、跨平台程序设计
 - 也在使用：Python，用于脚本、自动化和辅助工具
 - 目标：持续提升工程能力，打造稳定、高效、可维护的软件
-- 座右铭：把复杂问题拆成清晰模块，用代码解决实际问题
+- 座右铭：复杂的问题简单化，简单的问题复杂化。
 
 <p align="center">
   <img src="./assets/readme/section-tech-stack.svg" width="100%" alt="Tech Stack section header">
@@ -39,12 +39,12 @@
 ## 精选项目
 
 <p align="center">
-  <a href="https://github.com/huizhang557/huizhang557">
-    <img src="./assets/readme/pinned-bbdown.svg" width="100%" alt="Pinned project card">
+  <a href="https://github.com/huizhang557/ai-watch">
+    <img src="./assets/readme/pinned-bbdown.svg" width="100%" alt="AI Watch project card">
   </a>
 </p>
 
-[Bilibili Downloader](https://github.com/huizhang557/huizhang557) — 一个命令行式哔哩哔哩下载器，适合高频下载和脚本化使用。
+[AI Watch](https://github.com/huizhang557/ai-watch) — 这是我正在维护和实践的项目，聚焦于智能监控与辅助工具，体现我在 C++ / Qt 与 Python 相关开发中的实际应用。
 
 ## 成就
 
@@ -78,8 +78,8 @@
 
 ## 联系我
 
-- GitHub: [@Harry James](https://github.com/huizhang557)
-- Email: [haoli52052@gmail.com](mailto:haoli52052@gmail.com)
+- GitHub: [@huizhang557](https://github.com/huizhang557)
+- TG: [@skycity8020](https://t.me/skycity8020)
 - 如果你有 C++ / Qt 相关的开发、合作或技术交流需求，欢迎联系我。
 
 <p align="center">
