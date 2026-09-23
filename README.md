@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="huizhang556 profile welcome banner">
+  <img src="./assets/readme/hero.svg" width="100%" alt="huizhang557 profile welcome banner">
 </p>
 
 <p align="center">
@@ -8,7 +8,7 @@
 
 ## About
 
-Hi, I'm **huizhang556**.
+Hi, I'm **huizhang557**.
 
 A C++/Qt developer with 5 years of experience, focused on building reliable desktop applications. C++ is my primary language, and I also use Python for scripting and automation.
 
@@ -31,10 +31,10 @@ A C++/Qt developer with 5 years of experience, focused on building reliable desk
 
 ## Contact
 
-- GitHub: [@huizhang556](https://github.com/huizhang556)
+- GitHub: [@huizhang557](https://github.com/huizhang557)
 - Email: [zhhui431@gmail.com](mailto:zhhui431@gmail.com)
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=huizhang556&color=6B7F90&style=flat-square" alt="profile views">
+  <img src="https://komarev.com/ghpvc/?username=huizhang557&color=6B7F90&style=flat-square" alt="profile views">
 </p>
 
