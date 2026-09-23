@@ -1,6 +1,6 @@
-<h1 align="center">Harry James</h1>
-
-<p align="center">C++ / Qt 开发者 · Python 使用者</p>
+<p align="center">
+	<img src="./assets/readme/hero.svg" width="100%" alt="Harry James profile banner">
+</p>
 
 ## 关于我
 
@@ -24,22 +24,27 @@
 
 ## GitHub 概览
 
-数据以 GitHub 当前页面为准，避免在 README 中维护过期数字。
-
-| 项目 | 访问 |
-| --- | --- |
-| 个人主页 | [查看 GitHub 主页](https://github.com/huizhang557) |
-| 公开仓库 | [查看全部仓库](https://github.com/huizhang557?tab=repositories) |
-| 贡献记录 | [查看贡献活动](https://github.com/huizhang557?tab=overview) |
-| Star 项目 | [查看 Star 项目](https://github.com/huizhang557?tab=stars) |
+<p align="center">
+	<img src="./assets/readme/stats-overview.svg" width="100%" alt="Harry James GitHub overview">
+</p>
 
 ## 精选项目
 
-### [AI Watch](https://github.com/huizhang557/ai-watch)
+<p align="center">
+	<a href="https://github.com/huizhang557/ai-watch">
+		<img src="./assets/readme/pinned-bbdown.svg" width="100%" alt="AI Watch project card">
+	</a>
+</p>
 
-我的项目仓库，项目名称、语言、Star、Fork、提交记录等信息以仓库页面的实时内容为准。
+[AI Watch](https://github.com/huizhang557/ai-watch) — 我的项目仓库，卡片数据由 GitHub Actions 自动生成。
 
 ## 成就与活动
+
+<p align="center">
+	<a href="https://github.com/huizhang557?tab=achievements">
+		<img src="./assets/readme/achievements.svg" width="100%" alt="Harry James profile highlights">
+	</a>
+</p>
 
 - [查看 GitHub 成就](https://github.com/huizhang557?tab=achievements)
 - [查看贡献日历](https://github.com/huizhang557)
