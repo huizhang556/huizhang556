@@ -10,10 +10,11 @@
 
 你好，我是 **Selina Martin**，一名 C++/Qt 开发程序员。
 
-- 主要方向：C++ / Qt 桌面应用开发
-- 擅长：界面开发、业务逻辑封装、跨平台程序设计
+- 主要方向：C++ / Qt 桌面应用开发；web设计开发；Android设计开发；WX小程序开发。
+- 擅长：UI界面开发、业务逻辑封装、跨平台程序设计
 - 也在使用：Python，用于脚本、自动化和辅助工具
 - 关注：代码结构、可维护性、稳定性和工程实践
+- AI开发爱好者,重度使用者
 - 座右铭：世上无难事，只怕有心人。
 
 ## 技术栈
@@ -71,4 +72,4 @@
 - GitHub：[huizhang556](https://github.com/huizhang556)
 - Telegram：[@changfai666](https://t.me/changfai666)
 - 交流方向：C++ / Qt / 桌面应用 / Python 自动化
-
+/wewebkaikaifbkai'fa开发、/anAndroidkai'fa开发、/xiao'ch'n小程序开发
