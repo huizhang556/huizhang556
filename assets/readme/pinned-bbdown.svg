@@ -4,7 +4,8 @@
   <defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs>
   <rect width="1200" height="220" rx="30" fill="#FDF8F4" stroke="#E9EDF2" stroke-width="1.5"/>
   <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#3C4F66">vx_data_watch</text>
-  <text class="sans" x="48" y="124" font-size="18" fill="#6F7F90">HG工具站（VX Data Watch）是一个多功...</text>
+  <text class="sans" x="48" y="119" font-size="18" fill="#6F7F90">HG工具站（VX Data Watch）是一个</text>
+  <text class="sans" x="48" y="148" font-size="18" fill="#6F7F90">个多功能、综合性的工具类网站。其主要...</text>
   <g transform="rotate(-90 560 110)"><circle cx="560" cy="110" r="44" fill="none" stroke="#A97BFF" stroke-width="22" stroke-dasharray="127.95 148.51" stroke-dashoffset="0.00"/><circle cx="560" cy="110" r="44" fill="none" stroke="#347CC5" stroke-width="22" stroke-dasharray="98.24 178.22" stroke-dashoffset="-127.95"/><circle cx="560" cy="110" r="44" fill="none" stroke="#E8B98F" stroke-width="22" stroke-dasharray="40.25 236.21" stroke-dashoffset="-226.19"/><circle cx="560" cy="110" r="44" fill="none" stroke="#A4B8A6" stroke-width="22" stroke-dasharray="8.21 268.25" stroke-dashoffset="-266.44"/><circle cx="560" cy="110" r="44" fill="none" stroke="#9EB8D6" stroke-width="22" stroke-dasharray="0.64 275.82" stroke-dashoffset="-274.65"/><circle cx="560" cy="110" r="44" fill="none" stroke="#C9C4B8" stroke-width="22" stroke-dasharray="1.17 275.29" stroke-dashoffset="-275.29"/></g>
   <circle cx="560" cy="110" r="30" fill="#FDF8F4"/>
   <text class="sans" x="560" y="115" text-anchor="middle" font-size="12" font-weight="600" fill="#6B4C75">Tech</text>

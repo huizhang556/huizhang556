@@ -45,11 +45,13 @@ def text(value):
     return html.escape(str(value), quote=True)
 
 
-def truncate(value, limit):
+def truncate_lines(value, line_limit, max_lines):
     value = str(value or "").strip()
-    if len(value) <= limit:
-        return value
-    return value[: limit - 3].rstrip() + "..."
+    lines = [value[index : index + line_limit] for index in range(0, len(value), line_limit)]
+    if len(lines) > max_lines:
+        lines = lines[:max_lines]
+        lines[-1] = lines[-1][: line_limit - 3].rstrip() + "..."
+    return lines or [""]
 
 
 def write_asset(name, content):
@@ -139,7 +141,9 @@ def main():
     )
 
     project_languages = get_json(project["languages_url"])
-    project_description = truncate(project.get("description") or "暂无项目描述", 28)
+    project_description_lines = truncate_lines(
+        project.get("description") or "暂无项目描述", line_limit=22, max_lines=2
+    )
     project_language_rows = sorted(
         project_languages.items(), key=lambda item: item[1], reverse=True
     )
@@ -197,7 +201,8 @@ def main():
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
   <rect width="1200" height="220" rx="30" fill="#FDF8F4" stroke="#E9EDF2" stroke-width="1.5"/>
   <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#3C4F66">{text(project["name"])}</text>
-  <text class="sans" x="48" y="124" font-size="18" fill="#6F7F90">{text(project_description)}</text>
+  <text class="sans" x="48" y="119" font-size="18" fill="#6F7F90">{text(project_description_lines[0])}</text>
+  <text class="sans" x="48" y="148" font-size="18" fill="#6F7F90">{text(project_description_lines[1] if len(project_description_lines) > 1 else "")}</text>
   {project_language_chart}
   <g transform="translate(940,64)">
     <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">{project.get("stargazers_count", 0)}</text>
