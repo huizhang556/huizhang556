@@ -103,20 +103,22 @@ def main():
     )
 
     cards = []
-    for label, value in (("公开仓库", len(repos)), ("Stars", total_stars), ("关注者", user.get("followers", 0)), ("正在关注", user.get("following", 0))):
+    for label, value in (("Public Repos", len(repos)), ("Total Stars", total_stars), ("Followers", user.get("followers", 0)), ("Following", user.get("following", 0))):
         cards.append(f'<text class="sans" x="30" y="58" font-size="48" font-weight="700" fill="#3C4F66">{value}</text><text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">{label}</text>')
     card_groups = "".join(f'<g transform="translate({60 + index * 280},44)"><rect width="240" height="120" rx="20" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>{card}</g>' for index, card in enumerate(cards))
     language_rows = []
+    language_colors = ("#E0A07E", "#5668A3", "#347CC5", "#F0D84A", "#60438A")
     for index, (language, amount) in enumerate(top_languages):
         percent = round(amount * 100 / language_total)
         width = max(8, round(720 * percent / 100))
-        language_rows.append(f'<g transform="translate(0,{index * 44})"><text x="0" y="20" fill="#6F7F90">{text(language)}</text><rect x="150" y="0" width="720" height="28" rx="6" fill="#E9EDF2"/><rect x="150" y="0" width="{width}" height="28" rx="6" fill="#6F7F90"/><text x="890" y="20" fill="#3C4F66" font-weight="600">{percent}%</text></g>')
+        color = language_colors[index % len(language_colors)]
+        language_rows.append(f'<g transform="translate(0,{index * 44})"><text x="0" y="20" fill="#6F7F90">{text(language)}</text><rect x="150" y="0" width="720" height="28" rx="6" fill="#E9EDF2"/><rect x="150" y="0" width="{width}" height="28" rx="6" fill="{color}"/><text x="890" y="20" fill="#3C4F66" font-weight="600">{percent}%</text></g>')
     write_asset(
         "stats-overview.svg",
         f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
     <title id="title">{text(DISPLAY_NAME)} GitHub overview</title><desc id="desc">GitHub profile statistics generated from the GitHub API.</desc>
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="500" rx="28" fill="#FDF8F4"/>{card_groups}
-  <text class="sans" x="60" y="220" font-size="24" font-weight="700" fill="#3C4F66">主要语言</text><g transform="translate(60,270)" class="sans" font-size="18">{"".join(language_rows)}</g>
+  <text class="sans" x="60" y="220" font-size="24" font-weight="700" fill="#3C4F66">Top Languages</text><g transform="translate(60,270)" class="sans" font-size="18">{"".join(language_rows)}</g>
 </svg>
 ''',
     )

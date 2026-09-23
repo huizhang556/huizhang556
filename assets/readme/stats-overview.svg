@@ -16,38 +16,38 @@
     <g id="stat-repos">
       <rect width="240" height="120" rx="20" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <text class="sans" x="30" y="58" font-size="48" font-weight="700" fill="#3C4F66">91</text>
-      <text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">公开仓库</text>
+      <text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">Public Repos</text>
     </g>
 
     <g id="stat-stars" transform="translate(280, 0)">
       <rect width="240" height="120" rx="20" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <text class="sans" x="30" y="58" font-size="48" font-weight="700" fill="#3C4F66">1</text>
-      <text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">Stars</text>
+      <text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">Total Stars</text>
     </g>
 
     <g id="stat-followers" transform="translate(560, 0)">
       <rect width="240" height="120" rx="20" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <text class="sans" x="30" y="58" font-size="48" font-weight="700" fill="#3C4F66">1</text>
-      <text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">关注者</text>
+      <text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">Followers</text>
     </g>
 
     <g id="stat-following" transform="translate(840, 0)">
       <rect width="240" height="120" rx="20" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <text class="sans" x="30" y="58" font-size="48" font-weight="700" fill="#3C4F66">12</text>
-      <text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">正在关注</text>
+      <text class="sans" x="30" y="92" font-size="16" fill="#8A9CAD">Following</text>
     </g>
   </g>
 
   <!-- language bars -->
   <g transform="translate(60, 220)">
-    <text class="sans" font-size="24" font-weight="700" fill="#3C4F66">主要语言</text>
+    <text class="sans" font-size="24" font-weight="700" fill="#3C4F66">Top Languages</text>
   </g>
 
   <g transform="translate(60, 270)" class="sans" font-size="18">
     <!-- Language details are refreshed by GitHub Actions. -->
     <text x="0" y="20" fill="#6F7F90">Python</text>
     <rect x="150" y="0" width="720" height="28" rx="6" fill="#E9EDF2"/>
-    <rect x="150" y="0" width="720" height="28" rx="6" fill="#6F7F90"/>
-    <text x="890" y="20" fill="#3C4F66" font-weight="600">当前数据</text>
+    <rect x="150" y="0" width="720" height="28" rx="6" fill="#347CC5"/>
+    <text x="890" y="20" fill="#3C4F66" font-weight="600">100%</text>
   </g>
 </svg>
