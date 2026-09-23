@@ -130,12 +130,56 @@ def main():
 ''',
     )
 
-    project_language = text(project.get("language") or "未指定")
-    project_language_badge = f'''<g transform="translate(400,76)">
-    <rect width="130" height="38" rx="19" fill="#E3D4E8"/>
-    <circle cx="20" cy="19" r="6" fill="#A97BFF"/>
-    <text class="sans" x="34" y="25" font-size="16" font-weight="600" fill="#6B4C75">{project_language}</text>
-  </g>'''
+    project_languages = get_json(project["languages_url"])
+    project_language_rows = sorted(
+        project_languages.items(), key=lambda item: item[1], reverse=True
+    )
+    project_language_total = sum(project_languages.values())
+    project_language_colors = (
+        "#A97BFF",
+        "#347CC5",
+        "#E8B98F",
+        "#A4B8A6",
+        "#9EB8D6",
+        "#C9C4B8",
+    )
+    if project_language_total:
+        visible_languages = project_language_rows[:5]
+        other_amount = sum(amount for _, amount in project_language_rows[5:])
+        if other_amount:
+            visible_languages.append(("Other", other_amount))
+    else:
+        visible_languages = []
+
+    pie_center_x = 560
+    pie_center_y = 110
+    pie_radius = 44
+    pie_circumference = 2 * 3.141592653589793 * pie_radius
+    pie_segments = []
+    pie_legend = []
+    pie_offset = 0
+    for index, (language, amount) in enumerate(visible_languages):
+        segment_length = pie_circumference * amount / project_language_total
+        color = project_language_colors[index % len(project_language_colors)]
+        pie_segments.append(
+            f'<circle cx="{pie_center_x}" cy="{pie_center_y}" r="{pie_radius}" fill="none" stroke="{color}" stroke-width="22" stroke-dasharray="{segment_length:.2f} {pie_circumference - segment_length:.2f}" stroke-dashoffset="{-pie_offset:.2f}"/>'
+        )
+        percent = amount * 100 / project_language_total
+        pie_legend.append(
+            f'<g transform="translate(650,{58 + index * 25})"><circle cx="5" cy="-5" r="5" fill="{color}"/><text class="sans" x="18" y="0" font-size="14" fill="#6B4C75">{text(language)}</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#8A9CAD">{percent:.1f}%</text></g>'
+        )
+        pie_offset += segment_length
+    if not visible_languages:
+        pie_segments.append(
+            f'<circle cx="{pie_center_x}" cy="{pie_center_y}" r="{pie_radius}" fill="none" stroke="#E9EDF2" stroke-width="22"/>'
+        )
+        pie_legend.append(
+            '<text class="sans" x="650" y="110" font-size="14" fill="#8A9CAD">No language data</text>'
+        )
+    project_language_chart = f'''<g transform="rotate(-90 {pie_center_x} {pie_center_y})">{"".join(pie_segments)}</g>
+  <circle cx="{pie_center_x}" cy="{pie_center_y}" r="30" fill="#FDF8F4"/>
+  <text class="sans" x="{pie_center_x}" y="{pie_center_y + 5}" text-anchor="middle" font-size="12" font-weight="600" fill="#6B4C75">Tech</text>
+  {"".join(pie_legend)}'''
     write_asset(
         "pinned-bbdown.svg",
         f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
@@ -144,7 +188,7 @@ def main():
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
   <rect width="1200" height="220" rx="30" fill="#FDF8F4" stroke="#E9EDF2" stroke-width="1.5"/>
   <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#3C4F66">{text(project["name"])}</text>
-  {project_language_badge}
+  {project_language_chart}
   <g transform="translate(940,64)">
     <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">{project.get("stargazers_count", 0)}</text>
     <text class="sans" y="26" font-size="14" fill="#8A9CAD">Stars</text>
