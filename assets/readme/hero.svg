@@ -12,7 +12,7 @@
   <g transform="translate(810,64)">
     <rect width="340" height="180" rx="26" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
     <text class="sans" x="30" y="42" font-size="15" font-weight="700" fill="#A9BCC9">GitHub 概览</text>
-    <g transform="translate(30,80)"><text class="sans" font-size="38" font-weight="700" fill="#3C4F66">91</text><text class="sans" y="26" font-size="16" fill="#8A9CAD">仓库</text></g>
+    <g transform="translate(30,80)"><text class="sans" font-size="38" font-weight="700" fill="#3C4F66">92</text><text class="sans" y="26" font-size="16" fill="#8A9CAD">仓库</text></g>
     <g transform="translate(145,80)"><text class="sans" font-size="38" font-weight="700" fill="#3C4F66">3</text><text class="sans" y="26" font-size="16" fill="#8A9CAD">Stars</text></g>
     <g transform="translate(248,80)"><text class="sans" font-size="38" font-weight="700" fill="#3C4F66">1</text><text class="sans" y="26" font-size="16" fill="#8A9CAD">关注者</text></g>
   </g>
