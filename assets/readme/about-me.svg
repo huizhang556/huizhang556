@@ -5,23 +5,23 @@
   <rect width="1200" height="260" rx="28" fill="#0B1220"/>
   <text class="sans" x="50" y="48" font-size="22" font-weight="600" fill="#E6F1FF">C++ / Qt 开发者，专注桌面应用与自动化工具</text>
   <g transform="translate(40,78)">
-    <rect width="260" height="82" rx="16" fill="#E6F1FF" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#60A5FA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#E6F1FF">C++</text>
+    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
+    <circle cx="34" cy="41" r="20" fill="#60A5FA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#0B1220">C++</text>
     <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">C++ / Qt</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">桌面应用开发</text>
   </g>
   <g transform="translate(330,78)">
-    <rect width="260" height="82" rx="16" fill="#E6F1FF" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#F59E0B"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#E6F1FF">PY</text>
+    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
+    <circle cx="34" cy="41" r="20" fill="#F59E0B"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">PY</text>
     <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">Python</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">脚本与自动化</text>
   </g>
   <g transform="translate(620,78)">
-    <rect width="260" height="82" rx="16" fill="#E6F1FF" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#22D3EE"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#E6F1FF">WEB</text>
+    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
+    <circle cx="34" cy="41" r="20" fill="#A78BFA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#0B1220">WEB</text>
     <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">多端开发</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">Web / Android / 微信</text>
   </g>
   <g transform="translate(910,78)">
-    <rect width="250" height="82" rx="16" fill="#E6F1FF" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#34D399"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#E6F1FF">AI</text>
+    <rect width="250" height="82" rx="16" fill="#162033" stroke="#26354D"/>
+    <circle cx="34" cy="41" r="20" fill="#34D399"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">AI</text>
     <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">AI 工具</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">效率与开发辅助</text>
   </g>
   <text class="sans" x="50" y="215" font-size="22" font-weight="600" fill="#A7B5C8">“世上无难事，只怕有心人。”</text>

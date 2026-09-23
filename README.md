@@ -31,6 +31,12 @@
 ## 精选项目
 
 <p align="center">
+	<a href="https://github.com/huizhang556/pc-video-player">
+		<img src="./assets/readme/pinned-pc-video-player.svg" width="100%" alt="pc-video-player project card">
+	</a>
+</p>
+
+<p align="center">
 	<a href="https://github.com/huizhang556/vx_data_watch">
 		<img src="./assets/readme/pinned-bbdown.svg" width="100%" alt="vx_data_watch project card">
 	</a>

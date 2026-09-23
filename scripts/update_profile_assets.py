@@ -47,7 +47,21 @@ def text(value):
 
 def truncate_lines(value, line_limit, max_lines):
     value = str(value or "").strip()
-    lines = [value[index : index + line_limit] for index in range(0, len(value), line_limit)]
+    lines = []
+    start = 0
+    while start < len(value):
+        end = min(start + line_limit, len(value))
+        word_end = end
+        while (
+            start < word_end < len(value)
+            and value[word_end - 1].isascii()
+            and value[word_end].isascii()
+            and (value[word_end - 1].isalnum() or value[word_end - 1] in "-_/.+")
+            and (value[word_end].isalnum() or value[word_end] in "-_/.+")
+        ):
+            word_end -= 1
+        lines.append(value[start : word_end if word_end > start else end])
+        start = word_end if word_end > start else end
     if len(lines) > max_lines:
         lines = lines[:max_lines]
         lines[-1] = lines[-1][: line_limit - 3].rstrip() + "..."
@@ -74,11 +88,93 @@ def get_public_repos():
     return repos
 
 
+def write_project_card(project, filename):
+    project_languages = get_json(project["languages_url"])
+    project_description_lines = truncate_lines(
+        project.get("description") or "暂无项目描述", line_limit=22, max_lines=2
+    )
+    project_language_rows = sorted(
+        project_languages.items(), key=lambda item: item[1], reverse=True
+    )
+    project_language_total = sum(project_languages.values())
+    project_language_colors = (
+        "#A78BFA",
+        "#60A5FA",
+        "#F59E0B",
+        "#34D399",
+        "#22D3EE",
+        "#64748B",
+    )
+    if project_language_total:
+        visible_languages = project_language_rows[:5]
+        other_amount = sum(amount for _, amount in project_language_rows[5:])
+        if other_amount:
+            visible_languages.append(("Other", other_amount))
+    else:
+        visible_languages = []
+
+    pie_center_x = 560
+    pie_center_y = 110
+    pie_radius = 44
+    pie_circumference = 2 * 3.141592653589793 * pie_radius
+    pie_segments = []
+    pie_legend = []
+    pie_offset = 0
+    for index, (language, amount) in enumerate(visible_languages):
+        segment_length = pie_circumference * amount / project_language_total
+        color = project_language_colors[index % len(project_language_colors)]
+        pie_segments.append(
+            f'<circle cx="{pie_center_x}" cy="{pie_center_y}" r="{pie_radius}" fill="none" stroke="{color}" stroke-width="22" stroke-dasharray="{segment_length:.2f} {pie_circumference - segment_length:.2f}" stroke-dashoffset="{-pie_offset:.2f}"/>'
+        )
+        percent = amount * 100 / project_language_total
+        pie_legend.append(
+            f'<g transform="translate(650,{58 + index * 25})"><circle cx="5" cy="-5" r="5" fill="{color}"/><text class="sans" x="18" y="0" font-size="14" fill="#C4B5FD">{text(language)}</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#94A3B8">{percent:.1f}%</text></g>'
+        )
+        pie_offset += segment_length
+    if not visible_languages:
+        pie_segments.append(
+            f'<circle cx="{pie_center_x}" cy="{pie_center_y}" r="{pie_radius}" fill="none" stroke="#26354D" stroke-width="22"/>'
+        )
+        pie_legend.append(
+            '<text class="sans" x="650" y="110" font-size="14" fill="#94A3B8">No language data</text>'
+        )
+    project_language_chart = f'''<g transform="rotate(-90 {pie_center_x} {pie_center_y})">{"".join(pie_segments)}</g>
+  <circle cx="{pie_center_x}" cy="{pie_center_y}" r="30" fill="#0B1220"/>
+  <text class="sans" x="{pie_center_x}" y="{pie_center_y + 5}" text-anchor="middle" font-size="12" font-weight="600" fill="#C4B5FD">Tech</text>
+  {"".join(pie_legend)}'''
+    write_asset(
+        filename,
+        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
+  <title id="title">{text(project["name"])} project card</title>
+  <desc id="desc">Generated project card for the user's featured GitHub repository.</desc>
+  <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
+  <rect width="1200" height="220" rx="30" fill="#0B1220" stroke="#26354D" stroke-width="1.5"/>
+  <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#E6F1FF">{text(project["name"])}</text>
+  <text class="sans" x="48" y="119" font-size="18" fill="#A7B5C8">{text(project_description_lines[0])}</text>
+  <text class="sans" x="48" y="148" font-size="18" fill="#A7B5C8">{text(project_description_lines[1] if len(project_description_lines) > 1 else "")}</text>
+  {project_language_chart}
+  <g transform="translate(940,64)">
+    <text class="sans" font-size="26" font-weight="700" fill="#E6F1FF">{project.get("stargazers_count", 0)}</text>
+    <text class="sans" y="26" font-size="14" fill="#94A3B8">Stars</text>
+    <g transform="translate(90,0)">
+      <text class="sans" font-size="26" font-weight="700" fill="#E6F1FF">{project.get("forks_count", 0)}</text>
+      <text class="sans" y="26" font-size="14" fill="#94A3B8">Forks</text>
+    </g>
+  </g>
+</svg>
+''',
+    )
+
+
 def main():
     user = get_json(f"https://api.github.com/users/{USERNAME}")
     repos = get_public_repos()
     original_repos = [repo for repo in repos if not repo.get("fork", False)]
-    project = get_json(f"https://api.github.com/repos/{USERNAME}/{PROJECT}")
+    projects = [
+        get_json(f"https://api.github.com/repos/{USERNAME}/pc-video-player"),
+        get_json(f"https://api.github.com/repos/{USERNAME}/{PROJECT}"),
+    ]
+    project = projects[-1]
 
     total_stars = sum(repo.get("stargazers_count", 0) for repo in repos)
     languages = {}
@@ -173,81 +269,8 @@ def main():
 ''',
     )
 
-    project_languages = get_json(project["languages_url"])
-    project_description_lines = truncate_lines(
-        project.get("description") or "暂无项目描述", line_limit=22, max_lines=2
-    )
-    project_language_rows = sorted(
-        project_languages.items(), key=lambda item: item[1], reverse=True
-    )
-    project_language_total = sum(project_languages.values())
-    project_language_colors = (
-        "#A78BFA",
-        "#60A5FA",
-        "#F59E0B",
-        "#34D399",
-        "#22D3EE",
-        "#64748B",
-    )
-    if project_language_total:
-        visible_languages = project_language_rows[:5]
-        other_amount = sum(amount for _, amount in project_language_rows[5:])
-        if other_amount:
-            visible_languages.append(("Other", other_amount))
-    else:
-        visible_languages = []
-
-    pie_center_x = 560
-    pie_center_y = 110
-    pie_radius = 44
-    pie_circumference = 2 * 3.141592653589793 * pie_radius
-    pie_segments = []
-    pie_legend = []
-    pie_offset = 0
-    for index, (language, amount) in enumerate(visible_languages):
-        segment_length = pie_circumference * amount / project_language_total
-        color = project_language_colors[index % len(project_language_colors)]
-        pie_segments.append(
-            f'<circle cx="{pie_center_x}" cy="{pie_center_y}" r="{pie_radius}" fill="none" stroke="{color}" stroke-width="22" stroke-dasharray="{segment_length:.2f} {pie_circumference - segment_length:.2f}" stroke-dashoffset="{-pie_offset:.2f}"/>'
-        )
-        percent = amount * 100 / project_language_total
-        pie_legend.append(
-            f'<g transform="translate(650,{58 + index * 25})"><circle cx="5" cy="-5" r="5" fill="{color}"/><text class="sans" x="18" y="0" font-size="14" fill="#C4B5FD">{text(language)}</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#94A3B8">{percent:.1f}%</text></g>'
-        )
-        pie_offset += segment_length
-    if not visible_languages:
-        pie_segments.append(
-            f'<circle cx="{pie_center_x}" cy="{pie_center_y}" r="{pie_radius}" fill="none" stroke="#26354D" stroke-width="22"/>'
-        )
-        pie_legend.append(
-            '<text class="sans" x="650" y="110" font-size="14" fill="#94A3B8">No language data</text>'
-        )
-    project_language_chart = f'''<g transform="rotate(-90 {pie_center_x} {pie_center_y})">{"".join(pie_segments)}</g>
-  <circle cx="{pie_center_x}" cy="{pie_center_y}" r="30" fill="#0B1220"/>
-  <text class="sans" x="{pie_center_x}" y="{pie_center_y + 5}" text-anchor="middle" font-size="12" font-weight="600" fill="#C4B5FD">Tech</text>
-  {"".join(pie_legend)}'''
-    write_asset(
-        "pinned-bbdown.svg",
-        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
-  <title id="title">{text(project["name"])} project card</title>
-  <desc id="desc">Generated project card for the user's featured GitHub repository.</desc>
-  <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
-  <rect width="1200" height="220" rx="30" fill="#0B1220" stroke="#26354D" stroke-width="1.5"/>
-  <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#E6F1FF">{text(project["name"])}</text>
-  <text class="sans" x="48" y="119" font-size="18" fill="#A7B5C8">{text(project_description_lines[0])}</text>
-  <text class="sans" x="48" y="148" font-size="18" fill="#A7B5C8">{text(project_description_lines[1] if len(project_description_lines) > 1 else "")}</text>
-  {project_language_chart}
-  <g transform="translate(940,64)">
-    <text class="sans" font-size="26" font-weight="700" fill="#E6F1FF">{project.get("stargazers_count", 0)}</text>
-    <text class="sans" y="26" font-size="14" fill="#94A3B8">Stars</text>
-    <g transform="translate(90,0)">
-      <text class="sans" font-size="26" font-weight="700" fill="#E6F1FF">{project.get("forks_count", 0)}</text>
-      <text class="sans" y="26" font-size="14" fill="#94A3B8">Forks</text>
-    </g>
-  </g>
-</svg>
-''',
-    )
+    write_project_card(projects[0], "pinned-pc-video-player.svg")
+    write_project_card(projects[1], "pinned-bbdown.svg")
 
     write_asset(
         "achievements.svg",
