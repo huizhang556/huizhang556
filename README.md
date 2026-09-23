@@ -2,6 +2,10 @@
 	<img src="./assets/readme/hero.svg" width="100%" alt="Selina Martin profile banner">
 </p>
 
+<p align="center">
+	<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=500&size=24&pause=1000&color=6B7F90&center=true&vCenter=true&width=800&lines=C%2B%2B+%2F+Qt+developer;Python+automation+enthusiast;Open+source+enthusiast" alt="动态签名">
+</p>
+
 ## 关于我
 
 你好，我是 **Selina Martin**，一名 C++/Qt 开发程序员。
