@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="160" viewBox="0 0 1200 160" role="img" aria-labelledby="title desc">
   <title id="title">GitHub Achievements showcase</title>
-  <desc id="desc">A light pastel showcase of GitHub profile achievements earned by aliveranme using colored icon dots instead of emoji.</desc>
+  <desc id="desc">A light pastel showcase of Harry James GitHub achievements.</desc>
   <defs>
     <style>
       .sans {
@@ -11,54 +11,54 @@
 
   <rect width="1200" height="160" rx="28" fill="#FDF8F4"/>
 
-  <!-- achievement pills -->
+  <!-- Achievement placeholders; GitHub profile achievements are not available through the public API. -->
   <g transform="translate(26, 48)" class="sans" font-size="18" font-weight="600">
     <!-- Pair Extraordinaire -->
     <g transform="translate(0, 0)">
       <rect width="188" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <circle cx="20" cy="22" r="7" fill="#AFDADA"/>
-      <text x="40" y="29" fill="#3C4F66">Pair</text>
-      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">Extraordinaire</text>
+      <text x="40" y="29" fill="#3C4F66">C++</text>
+      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">Qt 开发</text>
     </g>
 
     <!-- YOLO -->
     <g transform="translate(204, 0)">
       <rect width="140" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <circle cx="20" cy="22" r="7" fill="#F3C5B4"/>
-      <text x="40" y="29" fill="#3C4F66">YOLO</text>
-      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">Merge first</text>
+      <text x="40" y="29" fill="#3C4F66">Python</text>
+      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">脚本与自动化</text>
     </g>
 
     <!-- Starstruck -->
     <g transform="translate(360, 0)">
       <rect width="172" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <circle cx="20" cy="22" r="7" fill="#F3D5A0"/>
-      <text x="40" y="29" fill="#3C4F66">Starstruck</text>
-      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">x2</text>
+      <text x="40" y="29" fill="#3C4F66">AI Watch</text>
+      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">个人项目</text>
     </g>
 
     <!-- Quickdraw -->
     <g transform="translate(548, 0)">
       <rect width="174" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <circle cx="20" cy="22" r="7" fill="#F2C69E"/>
-      <text x="40" y="29" fill="#3C4F66">Quickdraw</text>
-      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">Fast first issue</text>
+      <text x="40" y="29" fill="#3C4F66">Kotlin</text>
+      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">项目实践</text>
     </g>
 
     <!-- Pull Shark -->
     <g transform="translate(738, 0)">
       <rect width="174" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <circle cx="20" cy="22" r="7" fill="#A8C6E3"/>
-      <text x="40" y="29" fill="#3C4F66">Pull Shark</text>
-      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">x2</text>
+      <text x="40" y="29" fill="#3C4F66">GitHub</text>
+      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">持续维护</text>
     </g>
 
     <!-- Developer Program Member / Pro -->
     <g transform="translate(928, 0)">
       <rect width="220" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
       <circle cx="20" cy="22" r="7" fill="#B9D4C3"/>
-      <text x="40" y="29" fill="#3C4F66">Developer</text>
-      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">Program Member / Pro</text>
+      <text x="40" y="29" fill="#3C4F66">Harry James</text>
+      <text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">技术主页</text>
     </g>
   </g>
 </svg>

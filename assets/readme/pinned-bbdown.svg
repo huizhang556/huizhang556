@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
-  <title id="title">BBDown pinned project card</title>
-  <desc id="desc">A light pastel project card for the BBDown Bilibili downloader repository.</desc>
+  <title id="title">AI Watch pinned project card</title>
+  <desc id="desc">A light pastel project card for the ai-watch repository.</desc>
   <defs>
     <style>
       .sans {
@@ -16,26 +16,26 @@
 
   <g transform="translate(48, 44)">
     <!-- title -->
-    <text class="sans" font-size="44" font-weight="700" fill="#3C4F66">BBDown</text>
+    <text class="sans" font-size="44" font-weight="700" fill="#3C4F66">AI Watch</text>
 
     <!-- language chip -->
     <g transform="translate(0, 60)">
-      <rect x="0" y="0" width="76" height="34" rx="17" fill="#E3D4E8"/>
-      <circle cx="18" cy="17" r="6" fill="#9B72AA"/>
-      <text class="sans" x="32" y="23" font-size="16" font-weight="600" fill="#6B4C75">C#</text>
+      <rect x="0" y="0" width="92" height="34" rx="17" fill="#E3D4E8"/>
+      <circle cx="18" cy="17" r="6" fill="#A97BFF"/>
+      <text class="sans" x="32" y="23" font-size="16" font-weight="600" fill="#6B4C75">Kotlin</text>
     </g>
 
-    <text class="sans" x="0" y="128" font-size="20" fill="#6F7F90">Bilibili Downloader · 一个命令行式哔哩哔哩下载器</text>
+    <text class="sans" x="0" y="128" font-size="20" fill="#6F7F90">个人 AI 监控与辅助工具项目</text>
   </g>
 
   <!-- stats -->
   <g transform="translate(940, 64)">
     <g transform="translate(0, 0)">
-      <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">25</text>
+      <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">1</text>
       <text class="sans" y="26" font-size="14" fill="#8A9CAD">Stars</text>
     </g>
     <g transform="translate(90, 0)">
-      <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">11</text>
+      <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">1</text>
       <text class="sans" y="26" font-size="14" fill="#8A9CAD">Forks</text>
     </g>
   </g>

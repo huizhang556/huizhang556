@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
-  <title id="title">aliveranme GitHub profile welcome banner</title>
-  <desc id="desc">Light pastel welcome banner showing the username aliveranme, their bio, location, and a small quick stats panel.</desc>
+  <title id="title">Harry James GitHub profile welcome banner</title>
+  <desc id="desc">Light pastel welcome banner for Harry James, a C++ and Qt developer.</desc>
 
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -28,28 +28,28 @@
   <!-- main title block -->
   <g transform="translate(80, 94)">
     <text class="sans" font-size="22" font-weight="600" fill="#94AAB9">Hi, I'm</text>
-    <text class="sans" y="72" font-size="68" font-weight="750" fill="#3C4F66">aliveranme</text>
-    <text class="sans" y="126" font-size="28" fill="#6F7F90">a computer lover</text>
+    <text class="sans" y="72" font-size="68" font-weight="750" fill="#3C4F66">Harry James</text>
+    <text class="sans" y="126" font-size="28" fill="#6F7F90">C++ / Qt 开发者</text>
   </g>
 
   <!-- quick stats panel -->
   <g transform="translate(810, 64)">
     <rect x="0" y="0" width="340" height="180" rx="26" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
-    <text class="sans" x="30" y="42" font-size="15" font-weight="700" letter-spacing="1" fill="#A9BCC9">QUICK STATS</text>
+    <text class="sans" x="30" y="42" font-size="15" font-weight="700" letter-spacing="1" fill="#A9BCC9">GitHub 概览</text>
 
     <g transform="translate(30, 80)">
-      <text class="sans" font-size="38" font-weight="700" fill="#3C4F66">276</text>
-      <text class="sans" y="26" font-size="16" fill="#8A9CAD">Stars</text>
+      <text class="sans" font-size="38" font-weight="700" fill="#3C4F66">11</text>
+      <text class="sans" y="26" font-size="16" fill="#8A9CAD">仓库</text>
     </g>
 
     <g transform="translate(145, 80)">
-      <text class="sans" font-size="38" font-weight="700" fill="#3C4F66">15</text>
-      <text class="sans" y="26" font-size="16" fill="#8A9CAD">Repos</text>
+      <text class="sans" font-size="38" font-weight="700" fill="#3C4F66">1</text>
+      <text class="sans" y="26" font-size="16" fill="#8A9CAD">Stars</text>
     </g>
 
     <g transform="translate(248, 80)">
-      <text class="sans" font-size="38" font-weight="700" fill="#3C4F66">6</text>
-      <text class="sans" y="26" font-size="16" fill="#8A9CAD">Awards</text>
+      <text class="sans" font-size="38" font-weight="700" fill="#3C4F66">2</text>
+      <text class="sans" y="26" font-size="16" fill="#8A9CAD">关注者</text>
     </g>
   </g>
 </svg>
