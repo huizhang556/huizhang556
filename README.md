@@ -13,6 +13,10 @@
 
 ## 技术栈
 
+<p align="center">
+	<img src="./assets/readme/section-tech-stack.svg" width="100%" alt="技术栈">
+</p>
+
 | 分类 | 技术 |
 | --- | --- |
 | 主力语言 | C++ |
@@ -46,9 +50,21 @@
 	</a>
 </p>
 
+<p align="center">
+	<a href="https://github.com/huizhang557?tab=overview">
+		<img src="./assets/readme/section-activity.svg" width="100%" alt="贡献活动">
+	</a>
+</p>
+
 - [查看 GitHub 成就](https://github.com/huizhang557?tab=achievements)
 - [查看贡献日历](https://github.com/huizhang557)
 - [查看项目活动](https://github.com/huizhang557?tab=overview)
+
+<p align="center">
+	<a href="https://github.com/huizhang557">
+		<img src="./assets/readme/section-live-widgets.svg" width="100%" alt="实时数据">
+	</a>
+</p>
 
 ## 联系我
 

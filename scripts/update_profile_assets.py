@@ -1,6 +1,7 @@
 import html
 import json
 import os
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -99,6 +100,28 @@ def main():
         '''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="160" viewBox="0 0 1200 160" role="img" aria-labelledby="title desc"><title id="title">Harry James profile highlights</title><desc id="desc">Profile highlights generated from the user's current projects and technologies.</desc><defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs><rect width="1200" height="160" rx="28" fill="#FDF8F4"/><g transform="translate(26,48)" class="sans" font-size="18" font-weight="600"><g><rect width="188" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2"/><text x="40" y="29" fill="#3C4F66">C++ / Qt</text><text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">主要方向</text></g><g transform="translate(204,0)"><rect width="180" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2"/><text x="40" y="29" fill="#3C4F66">Python</text><text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">脚本与自动化</text></g><g transform="translate(400,0)"><rect width="180" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2"/><text x="40" y="29" fill="#3C4F66">AI Watch</text><text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">精选项目</text></g><g transform="translate(596,0)"><rect width="180" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2"/><text x="40" y="29" fill="#3C4F66">Kotlin</text><text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">项目语言</text></g><g transform="translate(792,0)"><rect width="180" height="64" rx="18" fill="#FFFFFF" stroke="#E9EDF2"/><text x="40" y="29" fill="#3C4F66">GitHub</text><text x="40" y="51" font-size="14" font-weight="500" fill="#8A9CAD">持续维护</text></g></g></svg>
 ''',
     )
+
+    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    language_names = " · ".join(text(language) for language, _ in top_languages) or "暂无语言数据"
+
+    def section_asset(filename, title, subtitle):
+        write_asset(
+            filename,
+            f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-labelledby="title desc">
+  <title id="title">{text(title)}</title>
+  <desc id="desc">{text(subtitle)}</desc>
+  <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
+  <rect width="1200" height="150" rx="28" fill="#FDF8F4"/>
+  <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#3C4F66">{text(title)}</text>
+  <text class="sans" x="60" y="102" font-size="18" fill="#6F7F90">{text(subtitle)}</text>
+  <rect x="950" y="66" width="150" height="8" rx="4" fill="#AFDADA"/>
+</svg>
+''',
+        )
+
+    section_asset("section-tech-stack.svg", "技术栈", f"GitHub 语言数据：{language_names} · 更新于 {generated_at}")
+    section_asset("section-activity.svg", "贡献活动", f"{USERNAME} 的 GitHub 贡献记录 · 更新于 {generated_at}")
+    section_asset("section-live-widgets.svg", "实时数据", f"个人主页数据由 GitHub Actions 自动生成 · {generated_at}")
 
 
 if __name__ == "__main__":
