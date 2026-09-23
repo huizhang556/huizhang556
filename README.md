@@ -46,10 +46,6 @@
 	</a>
 </p>
 
-- [查看 GitHub 成就](https://github.com/huizhang556?tab=achievements)
-- [查看贡献日历](https://github.com/huizhang556)
-- [查看项目活动](https://github.com/huizhang556?tab=overview)
-
 <p align="center">
 	<a href="https://github.com/huizhang556">
 		<img src="./assets/readme/section-live-widgets.svg" width="100%" alt="实时数据">
