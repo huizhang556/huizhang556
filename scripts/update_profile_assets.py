@@ -150,7 +150,37 @@ def main():
 ''',
         )
 
-    section_asset("section-tech-stack.svg", "技术栈", f"GitHub 语言数据：{language_names}")
+    tech_badges = (
+        ("C++", "#9AAFC0"),
+        ("Qt", "#8FB3C2"),
+        ("Python", "#E8B98F"),
+        ("CMake", "#A4B8A6"),
+        ("Linux", "#C9C4B8"),
+        ("VS Code", "#9EB8D6"),
+        ("Git", "#E7B989"),
+    )
+    badge_groups = []
+    badge_x = 60
+    for label, color in tech_badges:
+        badge_width = max(72, len(label) * 13 + 28)
+        badge_groups.append(
+            f'<g transform="translate({badge_x},178)"><rect width="{badge_width}" height="34" rx="3" fill="{color}"/><text class="sans" x="{badge_width / 2:.0f}" y="22" text-anchor="middle" font-size="16" font-weight="600" fill="#FFFFFF">{text(label)}</text></g>'
+        )
+        badge_x += badge_width + 12
+    write_asset(
+        "section-tech-stack.svg",
+        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="230" viewBox="0 0 1200 230" role="img" aria-labelledby="title desc">
+  <title id="title">技术栈</title>
+  <desc id="desc">GitHub 语言数据与主要开发技术。</desc>
+  <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
+  <rect width="1200" height="150" rx="28" fill="#FDF8F4"/>
+  <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#3C4F66">技术栈</text>
+  <text class="sans" x="60" y="102" font-size="18" fill="#6F7F90">GitHub 语言数据：{language_names}</text>
+  <rect x="950" y="66" width="150" height="8" rx="4" fill="#AFDADA"/>
+  {"".join(badge_groups)}
+</svg>
+''',
+    )
     section_asset("section-activity.svg", "贡献活动", f"{USERNAME} 的 GitHub 贡献记录")
     section_asset("section-live-widgets.svg", "实时数据", "个人主页数据由 GitHub Actions 自动生成")
 

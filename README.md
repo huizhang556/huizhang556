@@ -15,17 +15,8 @@
 ## 技术栈
 
 <p align="center">
-	<img src="./assets/readme/section-tech-stack.svg" width="100%" alt="技术栈">
+	<img src="./assets/readme/section-tech-stack.svg" width="100%" alt="技术栈与开发工具">
 </p>
-
-| 分类 | 技术 |
-| --- | --- |
-| 主力语言 | C++ |
-| 桌面开发 | Qt |
-| 脚本与自动化 | Python |
-| 构建工具 | CMake |
-| 开发环境 | Linux、VS Code |
-| 版本管理 | Git |
 
 ## GitHub 概览
 
