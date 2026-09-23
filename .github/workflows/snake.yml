@@ -33,5 +33,4 @@ jobs:
           publish_branch: output
           publish_dir: dist
           force_orphan: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ github.token }}
