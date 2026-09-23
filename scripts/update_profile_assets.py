@@ -68,11 +68,12 @@ def get_public_repos():
 def main():
     user = get_json(f"https://api.github.com/users/{USERNAME}")
     repos = get_public_repos()
+    original_repos = [repo for repo in repos if not repo.get("fork", False)]
     project = get_json(f"https://api.github.com/repos/{USERNAME}/{PROJECT}")
 
     total_stars = sum(repo.get("stargazers_count", 0) for repo in repos)
     languages = {}
-    for repo in repos:
+    for repo in original_repos:
         try:
             repo_languages = get_json(repo["languages_url"])
         except RuntimeError as error:
@@ -122,9 +123,9 @@ def main():
     write_asset(
         "stats-overview.svg",
         f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
-    <title id="title">{text(DISPLAY_NAME)} GitHub overview</title><desc id="desc">GitHub profile statistics generated from the GitHub API.</desc>
+        <title id="title">{text(DISPLAY_NAME)} GitHub overview</title><desc id="desc">GitHub profile statistics generated from the GitHub API. Language statistics use original repositories only.</desc>
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="500" rx="28" fill="#FDF8F4"/>{card_groups}
-  <text class="sans" x="60" y="220" font-size="24" font-weight="700" fill="#3C4F66">Top Languages</text><g transform="translate(60,270)" class="sans" font-size="18">{"".join(language_rows)}</g>
+  <text class="sans" x="60" y="220" font-size="24" font-weight="700" fill="#3C4F66">Top Languages</text><text class="sans" x="270" y="220" font-size="14" fill="#8A9CAD">Original repositories only</text><g transform="translate(60,270)" class="sans" font-size="18">{"".join(language_rows)}</g>
 </svg>
 ''',
     )
@@ -200,17 +201,16 @@ def main():
         "section-tech-stack.svg",
         f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="230" viewBox="0 0 1200 230" role="img" aria-labelledby="title desc">
   <title id="title">技术栈</title>
-  <desc id="desc">GitHub 语言数据与主要开发技术。</desc>
+  <desc id="desc">GitHub 原创仓库语言数据与主要开发技术。</desc>
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
   <rect width="1200" height="150" rx="28" fill="#FDF8F4"/>
   <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#3C4F66">技术栈</text>
-  <text class="sans" x="60" y="102" font-size="18" fill="#6F7F90">GitHub 语言数据：{language_names}</text>
+  <text class="sans" x="60" y="102" font-size="18" fill="#6F7F90">原创仓库语言数据：{language_names}</text>
   <rect x="950" y="66" width="150" height="8" rx="4" fill="#AFDADA"/>
   {"".join(badge_groups)}
 </svg>
 ''',
     )
-    section_asset("section-activity.svg", "贡献活动", f"{USERNAME} 的 GitHub 贡献记录")
     section_asset("section-live-widgets.svg", "实时数据", "个人主页数据由 GitHub Actions 自动生成")
 
 

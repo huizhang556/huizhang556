@@ -36,18 +36,10 @@
 	</a>
 </p>
 
-## 成就与活动
+## 个人亮点
 
 <p align="center">
-	<a href="https://github.com/huizhang556?tab=achievements">
-		<img src="./assets/readme/achievements.svg" width="100%" alt="Selina Martin profile highlights">
-	</a>
-</p>
-
-<p align="center">
-	<a href="https://github.com/huizhang556?tab=overview">
-		<img src="./assets/readme/section-activity.svg" width="100%" alt="贡献活动">
-	</a>
+	<img src="./assets/readme/achievements.svg" width="100%" alt="Selina Martin profile highlights">
 </p>
 
 <p align="center">
@@ -55,6 +47,8 @@
 		<img src="./assets/readme/section-live-widgets.svg" width="100%" alt="实时数据">
 	</a>
 </p>
+
+## 贡献活动
 
 ### 3D 贡献图
 
