@@ -97,7 +97,7 @@ def main():
     <text class="sans" font-size="22" font-weight="600" fill="#94AAB9">你好，我是</text>
     <text class="sans" y="72" font-size="64" font-weight="750" fill="#3C4F66">{text(DISPLAY_NAME)}</text>
     <text class="sans" y="126" font-size="28" fill="#6F7F90">C++ / Qt 开发者</text>
-    <a href="https://gitee.com/qwert342"><text class="sans" y="174" font-size="18" fill="#6F7F90">同步Gitee主页 : https://gitee.com/qwert342</text></a>
+    <a href="https://gitee.com/qwert342"><text class="sans" y="174" font-size="22" font-weight="650" fill="#4F6FAE" text-decoration="underline" style="cursor:pointer">同步Gitee主页 : https://gitee.com/qwert342</text></a>
   </g>
   <g transform="translate(810,64)">
     <rect width="340" height="180" rx="26" fill="#FFFFFF" stroke="#E9EDF2" stroke-width="1.5"/>
