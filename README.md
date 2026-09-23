@@ -71,5 +71,3 @@
 
 - GitHub：[huizhang556](https://github.com/huizhang556)
 - Telegram：[@changfai666](https://t.me/changfai666)
-- 交流方向：C++ / Qt / 桌面应用 / Python 自动化
-/wewebkaikaifbkai'fa开发、/anAndroidkai'fa开发、/xiao'ch'n小程序开发
