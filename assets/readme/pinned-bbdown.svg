@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
-  <title id="title">AI Watch pinned project card</title>
-  <desc id="desc">A light pastel project card for the ai-watch repository.</desc>
+  <title id="title">vx_data_watch pinned project card</title>
+  <desc id="desc">A light pastel project card for the vx_data_watch repository.</desc>
   <defs>
     <style>
       .sans {
@@ -16,16 +16,16 @@
 
   <g transform="translate(48, 44)">
     <!-- title -->
-    <text class="sans" font-size="44" font-weight="700" fill="#3C4F66">AI Watch</text>
+    <text class="sans" font-size="44" font-weight="700" fill="#3C4F66">vx_data_watch</text>
 
     <!-- language chip -->
     <g transform="translate(0, 60)">
       <rect x="0" y="0" width="92" height="34" rx="17" fill="#E3D4E8"/>
       <circle cx="18" cy="17" r="6" fill="#A97BFF"/>
-      <text class="sans" x="32" y="23" font-size="16" font-weight="600" fill="#6B4C75">Kotlin</text>
+      <text class="sans" x="32" y="23" font-size="16" font-weight="600" fill="#6B4C75">Python</text>
     </g>
 
-    <text class="sans" x="0" y="128" font-size="20" fill="#6F7F90">个人 AI 监控与辅助工具项目</text>
+    <text class="sans" x="0" y="128" font-size="20" fill="#6F7F90">多功能综合工具站与数据分析平台</text>
   </g>
 
   <!-- stats -->
