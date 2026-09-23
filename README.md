@@ -32,8 +32,6 @@
 	</a>
 </p>
 
-[vx_data_watch](https://github.com/huizhang556/vx_data_watch) — 我的精选项目，卡片数据由 GitHub Actions 自动生成。
-
 ## 成就与活动
 
 <p align="center">

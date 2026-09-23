@@ -129,9 +129,30 @@ def main():
 ''',
     )
 
+    project_language = text(project.get("language") or "未指定")
+    project_language_badge = f'''<g transform="translate(400,76)">
+    <rect width="130" height="38" rx="19" fill="#E3D4E8"/>
+    <circle cx="20" cy="19" r="6" fill="#A97BFF"/>
+    <text class="sans" x="34" y="25" font-size="16" font-weight="600" fill="#6B4C75">{project_language}</text>
+  </g>'''
     write_asset(
         "pinned-bbdown.svg",
-        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc"><title id="title">{text(project["name"])} project card</title><desc id="desc">Generated project card for the user's featured GitHub repository.</desc><defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="220" rx="30" fill="#FDF8F4" stroke="#E9EDF2" stroke-width="1.5"/><g transform="translate(48,44)"><text class="sans" font-size="44" font-weight="700" fill="#3C4F66">{text(project["name"])}</text><text class="sans" x="0" y="94" font-size="20" fill="#6F7F90">语言：{text(project.get("language") or "未指定")} · {text(project.get("description") or "个人项目实践")}</text></g><g transform="translate(940,64)"><text class="sans" font-size="26" font-weight="700" fill="#3C4F66">{project.get("stargazers_count", 0)}</text><text class="sans" y="26" font-size="14" fill="#8A9CAD">Stars</text><g transform="translate(90,0)"><text class="sans" font-size="26" font-weight="700" fill="#3C4F66">{project.get("forks_count", 0)}</text><text class="sans" y="26" font-size="14" fill="#8A9CAD">Forks</text></g></g></svg>
+        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
+  <title id="title">{text(project["name"])} project card</title>
+  <desc id="desc">Generated project card for the user's featured GitHub repository.</desc>
+  <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
+  <rect width="1200" height="220" rx="30" fill="#FDF8F4" stroke="#E9EDF2" stroke-width="1.5"/>
+  <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#3C4F66">{text(project["name"])}</text>
+  {project_language_badge}
+  <g transform="translate(940,64)">
+    <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">{project.get("stargazers_count", 0)}</text>
+    <text class="sans" y="26" font-size="14" fill="#8A9CAD">Stars</text>
+    <g transform="translate(90,0)">
+      <text class="sans" font-size="26" font-weight="700" fill="#3C4F66">{project.get("forks_count", 0)}</text>
+      <text class="sans" y="26" font-size="14" fill="#8A9CAD">Forks</text>
+    </g>
+  </g>
+</svg>
 ''',
     )
 
@@ -168,7 +189,7 @@ def main():
         ("Git", "#E7B989"),
     )
     badge_groups = []
-    badge_x = 60
+    badge_x = 250
     for label, color in tech_badges:
         badge_width = max(72, len(label) * 13 + 28)
         badge_groups.append(

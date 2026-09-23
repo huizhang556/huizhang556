@@ -11,21 +11,12 @@
 
   <rect width="1200" height="220" rx="30" fill="#FDF8F4" stroke="#E9EDF2" stroke-width="1.5"/>
 
-  <!-- decorative code bracket motif -->
-  <text x="1110" y="180" class="sans" font-size="90" font-weight="700" fill="#E9EDF2" text-anchor="end">&lt;/&gt;</text>
-
-  <g transform="translate(48, 44)">
-    <!-- title -->
-    <text class="sans" font-size="44" font-weight="700" fill="#3C4F66">vx_data_watch</text>
-
-    <!-- language chip -->
-    <g transform="translate(0, 60)">
-      <rect x="0" y="0" width="92" height="34" rx="17" fill="#E3D4E8"/>
-      <circle cx="18" cy="17" r="6" fill="#A97BFF"/>
-      <text class="sans" x="32" y="23" font-size="16" font-weight="600" fill="#6B4C75">Python</text>
-    </g>
-
-    <text class="sans" x="0" y="128" font-size="20" fill="#6F7F90">多功能综合工具站与数据分析平台</text>
+  <text class="sans" x="1110" y="180" font-size="90" font-weight="700" fill="#E9EDF2" text-anchor="end">&lt;/&gt;</text>
+  <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#3C4F66">vx_data_watch</text>
+  <g transform="translate(400,76)">
+    <rect width="130" height="38" rx="19" fill="#E3D4E8"/>
+    <circle cx="20" cy="19" r="6" fill="#A97BFF"/>
+    <text class="sans" x="34" y="25" font-size="16" font-weight="600" fill="#6B4C75">Python</text>
   </g>
 
   <!-- stats -->
