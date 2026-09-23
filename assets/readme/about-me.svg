@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
+  <title id="title">Selina Martin about</title>
+  <desc id="desc">C++ and Qt developer focused on desktop applications, automation, multi-platform development, and AI tools.</desc>
+  <defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs>
+  <rect width="1200" height="260" rx="28" fill="#FDF8F4"/>
+  <text class="sans" x="50" y="48" font-size="22" font-weight="600" fill="#3C4F66">C++ / Qt 开发者，专注桌面应用与自动化工具</text>
+  <g transform="translate(40,78)">
+    <rect width="260" height="82" rx="16" fill="#FFFFFF" stroke="#E9EDF2"/>
+    <circle cx="34" cy="41" r="20" fill="#9AAFC0"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">C++</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#3C4F66">C++ / Qt</text><text class="sans" x="70" y="59" font-size="14" fill="#6F7F90">桌面应用开发</text>
+  </g>
+  <g transform="translate(330,78)">
+    <rect width="260" height="82" rx="16" fill="#FFFFFF" stroke="#E9EDF2"/>
+    <circle cx="34" cy="41" r="20" fill="#E8B98F"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">PY</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#3C4F66">Python</text><text class="sans" x="70" y="59" font-size="14" fill="#6F7F90">脚本与自动化</text>
+  </g>
+  <g transform="translate(620,78)">
+    <rect width="260" height="82" rx="16" fill="#FFFFFF" stroke="#E9EDF2"/>
+    <circle cx="34" cy="41" r="20" fill="#9EB8D6"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">WEB</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#3C4F66">多端开发</text><text class="sans" x="70" y="59" font-size="14" fill="#6F7F90">Web / Android / 微信</text>
+  </g>
+  <g transform="translate(910,78)">
+    <rect width="250" height="82" rx="16" fill="#FFFFFF" stroke="#E9EDF2"/>
+    <circle cx="34" cy="41" r="20" fill="#A4B8A6"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">AI</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#3C4F66">AI 工具</text><text class="sans" x="70" y="59" font-size="14" fill="#6F7F90">效率与开发辅助</text>
+  </g>
+  <text class="sans" x="50" y="215" font-size="16" fill="#8A9CAD">“世上无难事，只怕有心人。”</text>
+</svg>
