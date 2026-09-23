@@ -2,19 +2,19 @@
   <title id="title">pc-video-player project card</title>
   <desc id="desc">Generated project card for the user's featured GitHub repository.</desc>
   <defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs>
-  <rect width="1200" height="220" rx="30" fill="#0B1220" stroke="#26354D" stroke-width="1.5"/>
-  <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#E6F1FF">pc-video-player</text>
-  <text class="sans" x="48" y="119" font-size="18" fill="#A7B5C8">SubVideoPlayer 是一款基于 </text>
-  <text class="sans" x="48" y="148" font-size="18" fill="#A7B5C8">Qt5 开发的 Windows 桌面音...</text>
+  <rect width="1200" height="220" rx="30" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+  <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#F8FAFC">pc-video-player</text>
+  <text class="sans" x="48" y="119" font-size="18" fill="#CBD5E1">SubVideoPlayer 是一款基于 </text>
+  <text class="sans" x="48" y="148" font-size="18" fill="#CBD5E1">Qt5 开发的 Windows 桌面音...</text>
   <g transform="rotate(-90 560 110)"><circle cx="560" cy="110" r="44" fill="none" stroke="#A78BFA" stroke-width="22" stroke-dasharray="194.33 82.13" stroke-dashoffset="0.00"/><circle cx="560" cy="110" r="44" fill="none" stroke="#60A5FA" stroke-width="22" stroke-dasharray="56.61 219.85" stroke-dashoffset="-194.33"/><circle cx="560" cy="110" r="44" fill="none" stroke="#F59E0B" stroke-width="22" stroke-dasharray="23.67 252.79" stroke-dashoffset="-250.95"/><circle cx="560" cy="110" r="44" fill="none" stroke="#34D399" stroke-width="22" stroke-dasharray="1.40 275.06" stroke-dashoffset="-274.62"/><circle cx="560" cy="110" r="44" fill="none" stroke="#22D3EE" stroke-width="22" stroke-dasharray="0.43 276.03" stroke-dashoffset="-276.01"/><circle cx="560" cy="110" r="44" fill="none" stroke="#64748B" stroke-width="22" stroke-dasharray="0.01 276.45" stroke-dashoffset="-276.45"/></g>
-  <circle cx="560" cy="110" r="30" fill="#0B1220"/>
+  <circle cx="560" cy="110" r="30" fill="#111827"/>
   <text class="sans" x="560" y="115" text-anchor="middle" font-size="12" font-weight="600" fill="#C4B5FD">Tech</text>
   <g transform="translate(650,58)"><circle cx="5" cy="-5" r="5" fill="#A78BFA"/><text class="sans" x="18" y="0" font-size="14" fill="#C4B5FD">C++</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#94A3B8">70.3%</text></g><g transform="translate(650,83)"><circle cx="5" cy="-5" r="5" fill="#60A5FA"/><text class="sans" x="18" y="0" font-size="14" fill="#C4B5FD">C</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#94A3B8">20.5%</text></g><g transform="translate(650,108)"><circle cx="5" cy="-5" r="5" fill="#F59E0B"/><text class="sans" x="18" y="0" font-size="14" fill="#C4B5FD">HTML</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#94A3B8">8.6%</text></g><g transform="translate(650,133)"><circle cx="5" cy="-5" r="5" fill="#34D399"/><text class="sans" x="18" y="0" font-size="14" fill="#C4B5FD">QMake</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#94A3B8">0.5%</text></g><g transform="translate(650,158)"><circle cx="5" cy="-5" r="5" fill="#22D3EE"/><text class="sans" x="18" y="0" font-size="14" fill="#C4B5FD">CSS</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#94A3B8">0.2%</text></g><g transform="translate(650,183)"><circle cx="5" cy="-5" r="5" fill="#64748B"/><text class="sans" x="18" y="0" font-size="14" fill="#C4B5FD">Other</text><text class="sans" x="130" y="0" font-size="14" text-anchor="end" fill="#94A3B8">0.0%</text></g>
   <g transform="translate(940,64)">
-    <text class="sans" font-size="26" font-weight="700" fill="#E6F1FF">0</text>
+    <text class="sans" font-size="26" font-weight="700" fill="#F8FAFC">0</text>
     <text class="sans" y="26" font-size="14" fill="#94A3B8">Stars</text>
     <g transform="translate(90,0)">
-      <text class="sans" font-size="26" font-weight="700" fill="#E6F1FF">0</text>
+      <text class="sans" font-size="26" font-weight="700" fill="#F8FAFC">0</text>
       <text class="sans" y="26" font-size="14" fill="#94A3B8">Forks</text>
     </g>
   </g>

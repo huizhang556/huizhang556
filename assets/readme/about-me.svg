@@ -2,27 +2,27 @@
   <title id="title">Selina Martin about</title>
   <desc id="desc">C++ and Qt developer focused on desktop applications, automation, multi-platform development, and AI tools.</desc>
   <defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs>
-  <rect width="1200" height="260" rx="28" fill="#0B1220"/>
-  <text class="sans" x="50" y="48" font-size="22" font-weight="600" fill="#E6F1FF">C++ / Qt 开发者，专注桌面应用与自动化工具</text>
+  <rect width="1200" height="260" rx="28" fill="#111827"/>
+  <text class="sans" x="50" y="48" font-size="22" font-weight="600" fill="#F8FAFC">C++ / Qt 开发者，专注桌面应用与自动化工具</text>
   <g transform="translate(40,78)">
-    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#60A5FA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#0B1220">C++</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">C++ / Qt</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">桌面应用开发</text>
+    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="#60A5FA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">C++</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">C++ / Qt</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">桌面应用开发</text>
   </g>
   <g transform="translate(330,78)">
-    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#F59E0B"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">PY</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">Python</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">脚本与自动化</text>
+    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="#F59E0B"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#111827">PY</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">Python</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">脚本与自动化</text>
   </g>
   <g transform="translate(620,78)">
-    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#A78BFA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#0B1220">WEB</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">多端开发</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">Web / Android / 微信</text>
+    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="#A78BFA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#111827">WEB</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">多端开发</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">Web / Android / 微信</text>
   </g>
   <g transform="translate(910,78)">
-    <rect width="250" height="82" rx="16" fill="#162033" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#34D399"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">AI</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">AI 工具</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">效率与开发辅助</text>
+    <rect width="250" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="#34D399"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#111827">AI</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">AI 工具</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">效率与开发辅助</text>
   </g>
-  <text class="sans" x="50" y="215" font-size="22" font-weight="600" fill="#A7B5C8">“世上无难事，只怕有心人。”</text>
+  <text class="sans" x="50" y="215" font-size="22" font-weight="600" fill="#CBD5E1">“世上无难事，只怕有心人。”</text>
 </svg>

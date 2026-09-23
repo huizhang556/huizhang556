@@ -133,13 +133,13 @@ def write_project_card(project, filename):
         pie_offset += segment_length
     if not visible_languages:
         pie_segments.append(
-            f'<circle cx="{pie_center_x}" cy="{pie_center_y}" r="{pie_radius}" fill="none" stroke="#26354D" stroke-width="22"/>'
+            f'<circle cx="{pie_center_x}" cy="{pie_center_y}" r="{pie_radius}" fill="none" stroke="#334155" stroke-width="22"/>'
         )
         pie_legend.append(
             '<text class="sans" x="650" y="110" font-size="14" fill="#94A3B8">No language data</text>'
         )
     project_language_chart = f'''<g transform="rotate(-90 {pie_center_x} {pie_center_y})">{"".join(pie_segments)}</g>
-  <circle cx="{pie_center_x}" cy="{pie_center_y}" r="30" fill="#0B1220"/>
+  <circle cx="{pie_center_x}" cy="{pie_center_y}" r="30" fill="#111827"/>
   <text class="sans" x="{pie_center_x}" y="{pie_center_y + 5}" text-anchor="middle" font-size="12" font-weight="600" fill="#C4B5FD">Tech</text>
   {"".join(pie_legend)}'''
     write_asset(
@@ -148,16 +148,16 @@ def write_project_card(project, filename):
   <title id="title">{text(project["name"])} project card</title>
   <desc id="desc">Generated project card for the user's featured GitHub repository.</desc>
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
-  <rect width="1200" height="220" rx="30" fill="#0B1220" stroke="#26354D" stroke-width="1.5"/>
-  <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#E6F1FF">{text(project["name"])}</text>
-  <text class="sans" x="48" y="119" font-size="18" fill="#A7B5C8">{text(project_description_lines[0])}</text>
-  <text class="sans" x="48" y="148" font-size="18" fill="#A7B5C8">{text(project_description_lines[1] if len(project_description_lines) > 1 else "")}</text>
+  <rect width="1200" height="220" rx="30" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+  <text class="sans" x="48" y="78" font-size="44" font-weight="700" fill="#F8FAFC">{text(project["name"])}</text>
+  <text class="sans" x="48" y="119" font-size="18" fill="#CBD5E1">{text(project_description_lines[0])}</text>
+  <text class="sans" x="48" y="148" font-size="18" fill="#CBD5E1">{text(project_description_lines[1] if len(project_description_lines) > 1 else "")}</text>
   {project_language_chart}
   <g transform="translate(940,64)">
-    <text class="sans" font-size="26" font-weight="700" fill="#E6F1FF">{project.get("stargazers_count", 0)}</text>
+    <text class="sans" font-size="26" font-weight="700" fill="#F8FAFC">{project.get("stargazers_count", 0)}</text>
     <text class="sans" y="26" font-size="14" fill="#94A3B8">Stars</text>
     <g transform="translate(90,0)">
-      <text class="sans" font-size="26" font-weight="700" fill="#E6F1FF">{project.get("forks_count", 0)}</text>
+      <text class="sans" font-size="26" font-weight="700" fill="#F8FAFC">{project.get("forks_count", 0)}</text>
       <text class="sans" y="26" font-size="14" fill="#94A3B8">Forks</text>
     </g>
   </g>
@@ -196,20 +196,20 @@ def main():
         f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
     <title id="title">{text(DISPLAY_NAME)} GitHub profile</title>
   <desc id="desc">C++ and Qt developer profile banner generated from GitHub data.</desc>
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0B1220"/><stop offset="100%" stop-color="#111827"/></linearGradient><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#111827"/><stop offset="100%" stop-color="#1E293B"/></linearGradient><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
   <rect width="1200" height="320" rx="38" fill="url(#bg)"/>
   <g transform="translate(80,94)">
     <text class="sans" font-size="22" font-weight="600" fill="#7DD3FC">你好，我是</text>
-    <text class="sans" y="72" font-size="64" font-weight="750" fill="#E6F1FF">{text(DISPLAY_NAME)}</text>
-    <text class="sans" y="126" font-size="28" fill="#A7B5C8">C++ / Qt 开发者</text>
+    <text class="sans" y="72" font-size="64" font-weight="750" fill="#F8FAFC">{text(DISPLAY_NAME)}</text>
+    <text class="sans" y="126" font-size="28" fill="#CBD5E1">C++ / Qt 开发者</text>
     <text class="sans" y="174" font-size="22" font-weight="650" fill="#22D3EE" text-decoration="underline">同步Gitee主页 : https://gitee.com/huizhang556</text>
   </g>
   <g transform="translate(810,64)">
-    <rect width="340" height="180" rx="26" fill="#162033" stroke="#26354D" stroke-width="1.5"/>
-    <text class="sans" x="30" y="42" font-size="15" font-weight="700" fill="#8FA8C2">GitHub 概览</text>
-    <g transform="translate(30,80)"><text class="sans" font-size="38" font-weight="700" fill="#E6F1FF">{len(repos)}</text><text class="sans" y="26" font-size="16" fill="#94A3B8">仓库</text></g>
-    <g transform="translate(145,80)"><text class="sans" font-size="38" font-weight="700" fill="#E6F1FF">{total_stars}</text><text class="sans" y="26" font-size="16" fill="#94A3B8">Stars</text></g>
-    <g transform="translate(248,80)"><text class="sans" font-size="38" font-weight="700" fill="#E6F1FF">{user.get("followers", 0)}</text><text class="sans" y="26" font-size="16" fill="#94A3B8">关注者</text></g>
+    <rect width="340" height="180" rx="26" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+    <text class="sans" x="30" y="42" font-size="15" font-weight="700" fill="#94A3B8">GitHub 概览</text>
+    <g transform="translate(30,80)"><text class="sans" font-size="38" font-weight="700" fill="#F8FAFC">{len(repos)}</text><text class="sans" y="26" font-size="16" fill="#94A3B8">仓库</text></g>
+    <g transform="translate(145,80)"><text class="sans" font-size="38" font-weight="700" fill="#F8FAFC">{total_stars}</text><text class="sans" y="26" font-size="16" fill="#94A3B8">Stars</text></g>
+    <g transform="translate(248,80)"><text class="sans" font-size="38" font-weight="700" fill="#F8FAFC">{user.get("followers", 0)}</text><text class="sans" y="26" font-size="16" fill="#94A3B8">关注者</text></g>
   </g>
 </svg>
 ''',
@@ -221,50 +221,50 @@ def main():
   <title id="title">{text(DISPLAY_NAME)} about</title>
   <desc id="desc">C++ and Qt developer focused on desktop applications, automation, multi-platform development, and AI tools.</desc>
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
-  <rect width="1200" height="260" rx="28" fill="#0B1220"/>
-  <text class="sans" x="50" y="48" font-size="22" font-weight="600" fill="#E6F1FF">C++ / Qt 开发者，专注桌面应用与自动化工具</text>
+  <rect width="1200" height="260" rx="28" fill="#111827"/>
+  <text class="sans" x="50" y="48" font-size="22" font-weight="600" fill="#F8FAFC">C++ / Qt 开发者，专注桌面应用与自动化工具</text>
   <g transform="translate(40,78)">
-    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#60A5FA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#0B1220">C++</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">C++ / Qt</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">桌面应用开发</text>
+    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="#60A5FA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">C++</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">C++ / Qt</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">桌面应用开发</text>
   </g>
   <g transform="translate(330,78)">
-    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#F59E0B"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">PY</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">Python</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">脚本与自动化</text>
+    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="#F59E0B"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#111827">PY</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">Python</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">脚本与自动化</text>
   </g>
   <g transform="translate(620,78)">
-    <rect width="260" height="82" rx="16" fill="#162033" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#A78BFA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#0B1220">WEB</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">多端开发</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">Web / Android / 微信</text>
+    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="#A78BFA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#111827">WEB</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">多端开发</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">Web / Android / 微信</text>
   </g>
   <g transform="translate(910,78)">
-    <rect width="250" height="82" rx="16" fill="#162033" stroke="#26354D"/>
-    <circle cx="34" cy="41" r="20" fill="#34D399"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">AI</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#E6F1FF">AI 工具</text><text class="sans" x="70" y="59" font-size="14" fill="#A7B5C8">效率与开发辅助</text>
+    <rect width="250" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="#34D399"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#111827">AI</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">AI 工具</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">效率与开发辅助</text>
   </g>
-  <text class="sans" x="50" y="215" font-size="22" font-weight="600" fill="#A7B5C8">“世上无难事，只怕有心人。”</text>
+  <text class="sans" x="50" y="215" font-size="22" font-weight="600" fill="#CBD5E1">“世上无难事，只怕有心人。”</text>
 </svg>
 ''',
     )
 
     cards = []
     for label, value in (("Public Repos", len(repos)), ("Total Stars", total_stars), ("Followers", user.get("followers", 0)), ("Following", user.get("following", 0))):
-        cards.append(f'<text class="sans" x="30" y="58" font-size="48" font-weight="700" fill="#E6F1FF">{value}</text><text class="sans" x="30" y="92" font-size="16" fill="#94A3B8">{label}</text>')
-    card_groups = "".join(f'<g transform="translate({60 + index * 280},44)"><rect width="240" height="120" rx="20" fill="#162033" stroke="#26354D" stroke-width="1.5"/>{card}</g>' for index, card in enumerate(cards))
+        cards.append(f'<text class="sans" x="30" y="58" font-size="48" font-weight="700" fill="#F8FAFC">{value}</text><text class="sans" x="30" y="92" font-size="16" fill="#94A3B8">{label}</text>')
+    card_groups = "".join(f'<g transform="translate({60 + index * 280},44)"><rect width="240" height="120" rx="20" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>{card}</g>' for index, card in enumerate(cards))
     language_rows = []
     language_colors = ("#22D3EE", "#60A5FA", "#A78BFA", "#F59E0B", "#34D399")
     for index, (language, amount) in enumerate(top_languages):
         percent = round(amount * 100 / language_total)
         width = max(8, round(720 * percent / 100))
         color = language_colors[index % len(language_colors)]
-        language_rows.append(f'<g transform="translate(0,{index * 44})"><text x="0" y="20" fill="#A7B5C8">{text(language)}</text><rect x="150" y="0" width="720" height="28" rx="6" fill="#26354D"/><rect x="150" y="0" width="{width}" height="28" rx="6" fill="{color}"/><text x="890" y="20" fill="#E6F1FF" font-weight="600">{percent}%</text></g>')
+        language_rows.append(f'<g transform="translate(0,{index * 44})"><text x="0" y="20" fill="#CBD5E1">{text(language)}</text><rect x="150" y="0" width="720" height="28" rx="6" fill="#334155"/><rect x="150" y="0" width="{width}" height="28" rx="6" fill="{color}"/><text x="890" y="20" fill="#F8FAFC" font-weight="600">{percent}%</text></g>')
     write_asset(
         "stats-overview.svg",
         f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
         <title id="title">{text(DISPLAY_NAME)} GitHub overview</title><desc id="desc">GitHub profile statistics generated from the GitHub API. Language statistics use original repositories only.</desc>
-  <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="500" rx="28" fill="#0B1220"/>{card_groups}
-  <text class="sans" x="60" y="220" font-size="24" font-weight="700" fill="#E6F1FF">Top Languages</text><text class="sans" x="270" y="220" font-size="14" fill="#94A3B8">Original repositories only</text><g transform="translate(60,270)" class="sans" font-size="18">{"".join(language_rows)}</g>
+  <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="500" rx="28" fill="#111827"/>{card_groups}
+  <text class="sans" x="60" y="220" font-size="24" font-weight="700" fill="#F8FAFC">Top Languages</text><text class="sans" x="270" y="220" font-size="14" fill="#94A3B8">Original repositories only</text><g transform="translate(60,270)" class="sans" font-size="18">{"".join(language_rows)}</g>
 </svg>
 ''',
     )
@@ -274,7 +274,7 @@ def main():
 
     write_asset(
         "achievements.svg",
-        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="160" viewBox="0 0 1200 160" role="img" aria-labelledby="title desc"><title id="title">{text(DISPLAY_NAME)} profile highlights</title><desc id="desc">Profile highlights generated from the user's current projects and technologies.</desc><defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="160" rx="28" fill="#0B1220"/><g transform="translate(26,48)" class="sans" font-size="18" font-weight="600"><g><rect width="188" height="64" rx="18" fill="#162033" stroke="#26354D"/><text x="40" y="29" fill="#E6F1FF">C++ / Qt</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">主要方向</text></g><g transform="translate(204,0)"><rect width="180" height="64" rx="18" fill="#162033" stroke="#26354D"/><text x="40" y="29" fill="#E6F1FF">Python</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">脚本与自动化</text></g><g transform="translate(400,0)"><rect width="180" height="64" rx="18" fill="#162033" stroke="#26354D"/><text x="40" y="29" fill="#E6F1FF">{text(project["name"])}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">精选项目</text></g><g transform="translate(596,0)"><rect width="180" height="64" rx="18" fill="#162033" stroke="#26354D"/><text x="40" y="29" fill="#E6F1FF">{text(project.get("language") or "项目")}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">项目语言</text></g><g transform="translate(792,0)"><rect width="180" height="64" rx="18" fill="#162033" stroke="#26354D"/><text x="40" y="29" fill="#E6F1FF">GitHub</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">持续维护</text></g></g></svg>
+        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="160" viewBox="0 0 1200 160" role="img" aria-labelledby="title desc"><title id="title">{text(DISPLAY_NAME)} profile highlights</title><desc id="desc">Profile highlights generated from the user's current projects and technologies.</desc><defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="160" rx="28" fill="#111827"/><g transform="translate(26,48)" class="sans" font-size="18" font-weight="600"><g><rect width="188" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">C++ / Qt</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">主要方向</text></g><g transform="translate(204,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">Python</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">脚本与自动化</text></g><g transform="translate(400,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">{text(project["name"])}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">精选项目</text></g><g transform="translate(596,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">{text(project.get("language") or "项目")}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">项目语言</text></g><g transform="translate(792,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">GitHub</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">持续维护</text></g></g></svg>
     ''',
     )
 
@@ -287,9 +287,9 @@ def main():
   <title id="title">{text(title)}</title>
   <desc id="desc">{text(subtitle)}</desc>
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
-  <rect width="1200" height="150" rx="28" fill="#0B1220"/>
-  <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#E6F1FF">{text(title)}</text>
-  <text class="sans" x="60" y="102" font-size="18" fill="#A7B5C8">{text(subtitle)}</text>
+  <rect width="1200" height="150" rx="28" fill="#111827"/>
+  <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#F8FAFC">{text(title)}</text>
+  <text class="sans" x="60" y="102" font-size="18" fill="#CBD5E1">{text(subtitle)}</text>
   <rect x="950" y="66" width="150" height="8" rx="4" fill="#22D3EE"/>
 </svg>
 ''',
@@ -309,7 +309,7 @@ def main():
     for label, color in tech_badges:
         badge_width = max(72, len(label) * 13 + 28)
         badge_groups.append(
-            f'<g transform="translate({badge_x},178)"><rect width="{badge_width}" height="34" rx="3" fill="{color}"/><text class="sans" x="{badge_width / 2:.0f}" y="22" text-anchor="middle" font-size="16" font-weight="600" fill="#0B1220">{text(label)}</text></g>'
+            f'<g transform="translate({badge_x},178)"><rect width="{badge_width}" height="34" rx="3" fill="{color}"/><text class="sans" x="{badge_width / 2:.0f}" y="22" text-anchor="middle" font-size="16" font-weight="600" fill="#111827">{text(label)}</text></g>'
         )
         badge_x += badge_width + 12
     write_asset(
@@ -318,9 +318,9 @@ def main():
   <title id="title">技术栈</title>
   <desc id="desc">GitHub 原创仓库语言数据与主要开发技术。</desc>
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
-  <rect width="1200" height="150" rx="28" fill="#0B1220"/>
-  <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#E6F1FF">技术栈</text>
-  <text class="sans" x="60" y="102" font-size="18" fill="#A7B5C8">原创仓库语言数据：{language_names}</text>
+  <rect width="1200" height="150" rx="28" fill="#111827"/>
+  <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#F8FAFC">技术栈</text>
+  <text class="sans" x="60" y="102" font-size="18" fill="#CBD5E1">原创仓库语言数据：{language_names}</text>
   <rect x="950" y="66" width="150" height="8" rx="4" fill="#22D3EE"/>
   {"".join(badge_groups)}
 </svg>
