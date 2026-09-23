@@ -1,8 +1,9 @@
 import html
 import json
 import os
-from datetime import datetime, timezone
+import time
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
@@ -14,16 +15,30 @@ OUTPUT = ROOT / "assets" / "readme"
 
 
 def get_json(url):
-    request = Request(
-        url,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "github-profile-assets",
-            "Authorization": f"Bearer {os.environ.get('GITHUB_TOKEN', '')}",
-        },
-    )
-    with urlopen(request, timeout=30) as response:
-        return json.load(response)
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "github-profile-assets",
+    }
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+
+    for attempt in range(3):
+        request = Request(url, headers=headers)
+        try:
+            with urlopen(request, timeout=30) as response:
+                return json.load(response)
+        except HTTPError as error:
+            if error.code == 403:
+                raise RuntimeError(
+                    "GitHub API access was denied or rate-limited; set GITHUB_TOKEN and retry."
+                ) from error
+            if error.code not in (429, 500, 502, 503, 504) or attempt == 2:
+                raise
+        except URLError:
+            if attempt == 2:
+                raise
+        time.sleep(2**attempt)
 
 
 def text(value):
@@ -118,7 +133,6 @@ def main():
     ''',
     )
 
-    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     language_names = " · ".join(text(language) for language, _ in top_languages) or "暂无语言数据"
 
     def section_asset(filename, title, subtitle):
@@ -136,9 +150,9 @@ def main():
 ''',
         )
 
-    section_asset("section-tech-stack.svg", "技术栈", f"GitHub 语言数据：{language_names} · 更新于 {generated_at}")
-    section_asset("section-activity.svg", "贡献活动", f"{USERNAME} 的 GitHub 贡献记录 · 更新于 {generated_at}")
-    section_asset("section-live-widgets.svg", "实时数据", f"个人主页数据由 GitHub Actions 自动生成 · {generated_at}")
+    section_asset("section-tech-stack.svg", "技术栈", f"GitHub 语言数据：{language_names}")
+    section_asset("section-activity.svg", "贡献活动", f"{USERNAME} 的 GitHub 贡献记录")
+    section_asset("section-live-widgets.svg", "实时数据", "个人主页数据由 GitHub Actions 自动生成")
 
 
 if __name__ == "__main__":

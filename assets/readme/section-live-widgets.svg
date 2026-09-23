@@ -1,10 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="130" viewBox="0 0 1200 130" role="img" aria-labelledby="title desc">
-  <title id="title">Live Widgets section header</title>
-  <desc id="desc">Light pastel section header for live widgets and real-time stats.</desc>
-  <rect width="1200" height="130" rx="28" fill="#FDF8F4"/>
-  <g transform="translate(60, 44)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
-    <text font-size="40" font-weight="700" fill="#3C4F66">Live Widgets</text>
-    <text y="44" font-size="18" fill="#6F7F90">Animated 3D contributions and contribution snake</text>
-  </g>
-  <rect x="560" y="48" width="72" height="8" rx="4" fill="#D6CFC2" opacity="0.8"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-labelledby="title desc">
+  <title id="title">实时数据</title>
+  <desc id="desc">个人主页数据由 GitHub Actions 自动生成。</desc>
+  <defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs>
+  <rect width="1200" height="150" rx="28" fill="#FDF8F4"/>
+  <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#3C4F66">实时数据</text>
+  <text class="sans" x="60" y="102" font-size="18" fill="#6F7F90">个人主页数据由 GitHub Actions 自动生成</text>
+  <rect x="950" y="66" width="150" height="8" rx="4" fill="#AFDADA"/>
 </svg>

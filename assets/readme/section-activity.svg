@@ -1,10 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="130" viewBox="0 0 1200 130" role="img" aria-labelledby="title desc">
-  <title id="title">GitHub Activity section header</title>
-  <desc id="desc">Light pastel section header for GitHub activity area.</desc>
-  <rect width="1200" height="130" rx="28" fill="#FDF8F4"/>
-  <g transform="translate(60, 44)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
-    <text font-size="40" font-weight="700" fill="#3C4F66">GitHub Activity</text>
-    <text y="44" font-size="18" fill="#6F7F90">Contribution highlights &amp; recent rhythm</text>
-  </g>
-  <rect x="600" y="48" width="72" height="8" rx="4" fill="#AFDADA" opacity="0.75"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-labelledby="title desc">
+  <title id="title">贡献活动</title>
+  <desc id="desc">huizhang556 的 GitHub 贡献记录。</desc>
+  <defs><style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}</style></defs>
+  <rect width="1200" height="150" rx="28" fill="#FDF8F4"/>
+  <text class="sans" x="60" y="62" font-size="32" font-weight="700" fill="#3C4F66">贡献活动</text>
+  <text class="sans" x="60" y="102" font-size="18" fill="#6F7F90">huizhang556 的 GitHub 贡献记录</text>
+  <rect x="950" y="66" width="150" height="8" rx="4" fill="#AFDADA"/>
 </svg>
