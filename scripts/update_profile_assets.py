@@ -31,13 +31,13 @@ def get_json(url):
         except HTTPError as error:
             if error.code == 403:
                 raise RuntimeError(
-                    "GitHub API access was denied or rate-limited; set GITHUB_TOKEN and retry."
+                    f"GitHub API access was denied or rate-limited for {url}; set GITHUB_TOKEN and retry."
                 ) from error
             if error.code not in (429, 500, 502, 503, 504) or attempt == 2:
-                raise
-        except URLError:
+                raise RuntimeError(f"GitHub API request failed ({error.code}) for {url}") from error
+        except URLError as error:
             if attempt == 2:
-                raise
+                raise RuntimeError(f"GitHub API request could not reach {url}") from error
         time.sleep(2**attempt)
 
 
@@ -73,7 +73,13 @@ def main():
     total_stars = sum(repo.get("stargazers_count", 0) for repo in repos)
     languages = {}
     for repo in repos:
-        repo_languages = get_json(repo["languages_url"])
+        try:
+            repo_languages = get_json(repo["languages_url"])
+        except RuntimeError as error:
+            if "denied or rate-limited" in str(error):
+                raise
+            print(f"Warning: skipping language statistics for {repo['full_name']}: {error}")
+            continue
         for language, amount in repo_languages.items():
             languages[language] = languages.get(language, 0) + amount
     top_languages = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
