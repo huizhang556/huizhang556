@@ -6,8 +6,8 @@
   <g transform="translate(80,94)">
     <text class="sans" font-size="22" font-weight="600" fill="#7DD3FC">你好，我是</text>
     <text class="sans" y="72" font-size="64" font-weight="750" fill="#F8FAFC">Selina Martin</text>
-    <text class="sans" y="126" font-size="28" fill="#CBD5E1">C++ / Qt 开发者</text>
-    <text class="sans" y="174" font-size="22" font-weight="650" fill="#22D3EE" text-decoration="underline">同步Gitee主页 : https://gitee.com/huizhang556</text>
+    <text class="sans" y="126" font-size="28" fill="#CBD5E1">C++ / Qt 开发者，专注桌面应用与自动化工具</text>
+    <text class="sans" y="174" font-size="22" font-weight="650" fill="#22D3EE" text-decoration="underline">同步主页 : https://gitee.com/huizhang556</text>
   </g>
   <g transform="translate(810,64)">
     <rect width="340" height="180" rx="26" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>

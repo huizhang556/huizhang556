@@ -1,17 +1,37 @@
 import html
+from http.client import IncompleteRead
 import json
 import os
 import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+from urllib.parse import quote
 
 
-USERNAME = "huizhang556"
-DISPLAY_NAME = "Selina Martin"
-PROJECT = "vx_data_watch"
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "assets" / "readme"
+CONFIG_PATH = ROOT / "profile.config.json"
+CONFIG = {}
+USERNAME = ""
+DISPLAY_NAME = ""
+THEME = {}
+
+
+def load_config():
+    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    required = ("username", "display_name", "featured_projects")
+    missing = [key for key in required if not config.get(key)]
+    if missing:
+        raise ValueError(f"Missing required profile config fields: {', '.join(missing)}")
+    if not isinstance(config["featured_projects"], list):
+        raise ValueError("featured_projects must be a list")
+    if not config["featured_projects"]:
+        raise ValueError("featured_projects must contain at least one project")
+    for project in config["featured_projects"]:
+        if not project.get("repo") or not project.get("asset"):
+            raise ValueError("Each featured project needs repo and asset")
+    return config
 
 
 def get_json(url):
@@ -35,7 +55,7 @@ def get_json(url):
                 ) from error
             if error.code not in (429, 500, 502, 503, 504) or attempt == 2:
                 raise RuntimeError(f"GitHub API request failed ({error.code}) for {url}") from error
-        except URLError as error:
+        except (URLError, IncompleteRead, TimeoutError) as error:
             if attempt == 2:
                 raise RuntimeError(f"GitHub API request could not reach {url}") from error
         time.sleep(2**attempt)
@@ -69,7 +89,44 @@ def truncate_lines(value, line_limit, max_lines):
 
 
 def write_asset(name, content):
+    color_map = {
+        "#111827": THEME.get("background", "#111827"),
+        "#1E293B": THEME.get("panel", "#1E293B"),
+        "#334155": THEME.get("border", "#334155"),
+        "#F8FAFC": THEME.get("text", "#F8FAFC"),
+        "#CBD5E1": THEME.get("muted", "#CBD5E1"),
+        "#94A3B8": THEME.get("subtle", "#94A3B8"),
+        "#22D3EE": THEME.get("accent", "#22D3EE"),
+    }
+    for source, target in color_map.items():
+        content = content.replace(source, target)
     (OUTPUT / name).write_text(content, encoding="utf-8")
+
+
+def render_readme(config):
+    template = (ROOT / "README.template.md").read_text(encoding="utf-8")
+    replacements = {
+        "{{USERNAME}}": text(config["username"]),
+        "{{DISPLAY_NAME}}": text(config["display_name"]),
+        "{{GITEE_URL}}": text(config.get("gitee_url", "")),
+        "{{TELEGRAM_LABEL}}": text(config.get("telegram", {}).get("label", "")),
+        "{{TELEGRAM_URL}}": text(config.get("telegram", {}).get("url", "")),
+        "{{BIO}}": text(config.get("bio", "")),
+        "{{TYPING_LINES}}": ";".join(
+            quote(str(line), safe="") for line in config.get("typing_lines", [])
+        ),
+        "{{PROJECT_SECTIONS}}": "\n\n".join(
+            f'''<p align="center">
+\t<a href="https://github.com/{text(project['repo'])}">
+\t\t<img src="./assets/readme/{text(project['asset'])}" width="100%" alt="{text(project['repo'])} project card">
+\t</a>
+</p>'''
+            for project in config["featured_projects"]
+        ),
+    }
+    for placeholder, value in replacements.items():
+        template = template.replace(placeholder, value)
+    (ROOT / "README.md").write_text(template, encoding="utf-8")
 
 
 def get_public_repos():
@@ -97,13 +154,8 @@ def write_project_card(project, filename):
         project_languages.items(), key=lambda item: item[1], reverse=True
     )
     project_language_total = sum(project_languages.values())
-    project_language_colors = (
-        "#A78BFA",
-        "#60A5FA",
-        "#F59E0B",
-        "#34D399",
-        "#22D3EE",
-        "#64748B",
+    project_language_colors = tuple(THEME.get("chart", [])) or (
+        "#A78BFA", "#60A5FA", "#F59E0B", "#34D399", "#22D3EE", "#64748B"
     )
     if project_language_total:
         visible_languages = project_language_rows[:5]
@@ -167,13 +219,15 @@ def write_project_card(project, filename):
 
 
 def main():
+    global CONFIG, USERNAME, DISPLAY_NAME, THEME
+    CONFIG = load_config()
+    USERNAME = CONFIG["username"]
+    DISPLAY_NAME = CONFIG["display_name"]
+    THEME = CONFIG.get("theme", {})
     user = get_json(f"https://api.github.com/users/{USERNAME}")
     repos = get_public_repos()
     original_repos = [repo for repo in repos if not repo.get("fork", False)]
-    projects = [
-        get_json(f"https://api.github.com/repos/{USERNAME}/pc-video-player"),
-        get_json(f"https://api.github.com/repos/{USERNAME}/{PROJECT}"),
-    ]
+    projects = [get_json(f"https://api.github.com/repos/{project['repo']}") for project in CONFIG["featured_projects"]]
     project = projects[-1]
 
     total_stars = sum(repo.get("stargazers_count", 0) for repo in repos)
@@ -190,6 +244,10 @@ def main():
             languages[language] = languages.get(language, 0) + amount
     top_languages = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
     language_total = sum(languages.values()) or 1
+    about = CONFIG.get("about", {})
+    about_cards = list(about.get("cards", []))
+    while len(about_cards) < 2:
+        about_cards.append({"icon": "", "title": "", "subtitle": "", "color": "#60A5FA"})
 
     write_asset(
         "hero.svg",
@@ -201,8 +259,8 @@ def main():
   <g transform="translate(80,94)">
     <text class="sans" font-size="22" font-weight="600" fill="#7DD3FC">你好，我是</text>
     <text class="sans" y="72" font-size="64" font-weight="750" fill="#F8FAFC">{text(DISPLAY_NAME)}</text>
-    <text class="sans" y="126" font-size="28" fill="#CBD5E1">C++ / Qt 开发者</text>
-    <text class="sans" y="174" font-size="22" font-weight="650" fill="#22D3EE" text-decoration="underline">同步Gitee主页 : https://gitee.com/huizhang556</text>
+    <text class="sans" y="126" font-size="28" fill="#CBD5E1">{text(about.get("headline", ""))}</text>
+    <text class="sans" y="174" font-size="22" font-weight="650" fill="#22D3EE" text-decoration="underline">同步主页 : {text(CONFIG.get("gitee_url", ""))}</text>
   </g>
   <g transform="translate(810,64)">
     <rect width="340" height="180" rx="26" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
@@ -215,6 +273,18 @@ def main():
 ''',
     )
 
+    about_card_groups = []
+    for index, card in enumerate(about_cards[:4]):
+        x = 40 + index * 290
+        width = 260 if index < 3 else 250
+        about_card_groups.append(
+            f'''<g transform="translate({x},78)">
+    <rect width="{width}" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
+    <circle cx="34" cy="41" r="20" fill="{text(card.get("color", "#60A5FA"))}"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">{text(card.get("icon", ""))}</text>
+    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">{text(card.get("title", ""))}</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">{text(card.get("subtitle", ""))}</text>
+  </g>'''
+        )
+    about_card_markup = "\n  ".join(about_card_groups)
     write_asset(
         "about-me.svg",
         f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
@@ -222,28 +292,9 @@ def main():
   <desc id="desc">C++ and Qt developer focused on desktop applications, automation, multi-platform development, and AI tools.</desc>
   <defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs>
   <rect width="1200" height="260" rx="28" fill="#111827"/>
-  <text class="sans" x="50" y="48" font-size="22" font-weight="600" fill="#F8FAFC">C++ / Qt 开发者，专注桌面应用与自动化工具</text>
-  <g transform="translate(40,78)">
-    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
-    <circle cx="34" cy="41" r="20" fill="#60A5FA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#111827">C++</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">C++ / Qt</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">桌面应用开发</text>
-  </g>
-  <g transform="translate(330,78)">
-    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
-    <circle cx="34" cy="41" r="20" fill="#F59E0B"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#111827">PY</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">Python</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">脚本与自动化</text>
-  </g>
-  <g transform="translate(620,78)">
-    <rect width="260" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
-    <circle cx="34" cy="41" r="20" fill="#A78BFA"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#111827">WEB</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">多端开发</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">Web / Android / 微信</text>
-  </g>
-  <g transform="translate(910,78)">
-    <rect width="250" height="82" rx="16" fill="#1E293B" stroke="#334155"/>
-    <circle cx="34" cy="41" r="20" fill="#34D399"/><text class="sans" x="34" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#111827">AI</text>
-    <text class="sans" x="70" y="36" font-size="18" font-weight="700" fill="#F8FAFC">AI 工具</text><text class="sans" x="70" y="59" font-size="14" fill="#CBD5E1">效率与开发辅助</text>
-  </g>
-  <text class="sans" x="50" y="215" font-size="22" font-weight="600" fill="#CBD5E1">“世上无难事，只怕有心人。”</text>
+  <text class="sans" x="50" y="48" font-size="22" font-weight="600" fill="#F8FAFC">{text(about.get("headline", ""))}</text>
+  {about_card_markup}
+  <text class="sans" x="50" y="215" font-size="22" font-weight="600" fill="#CBD5E1">“{text(about.get("motto", ""))}”</text>
 </svg>
 ''',
     )
@@ -269,12 +320,12 @@ def main():
 ''',
     )
 
-    write_project_card(projects[0], "pinned-pc-video-player.svg")
-    write_project_card(projects[1], "pinned-bbdown.svg")
+    for project_data, project in zip(CONFIG["featured_projects"], projects):
+        write_project_card(project, project_data["asset"])
 
     write_asset(
         "achievements.svg",
-        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="160" viewBox="0 0 1200 160" role="img" aria-labelledby="title desc"><title id="title">{text(DISPLAY_NAME)} profile highlights</title><desc id="desc">Profile highlights generated from the user's current projects and technologies.</desc><defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="160" rx="28" fill="#111827"/><g transform="translate(26,48)" class="sans" font-size="18" font-weight="600"><g><rect width="188" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">C++ / Qt</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">主要方向</text></g><g transform="translate(204,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">Python</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">脚本与自动化</text></g><g transform="translate(400,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">{text(project["name"])}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">精选项目</text></g><g transform="translate(596,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">{text(project.get("language") or "项目")}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">项目语言</text></g><g transform="translate(792,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">GitHub</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">持续维护</text></g></g></svg>
+        f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="160" viewBox="0 0 1200 160" role="img" aria-labelledby="title desc"><title id="title">{text(DISPLAY_NAME)} profile highlights</title><desc id="desc">Profile highlights generated from the user's current projects and technologies.</desc><defs><style>.sans{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}}</style></defs><rect width="1200" height="160" rx="28" fill="#111827"/><g transform="translate(26,48)" class="sans" font-size="18" font-weight="600"><g><rect width="188" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">{text(about_cards[0].get("title", ""))}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">主要方向</text></g><g transform="translate(204,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">{text(about_cards[1].get("title", ""))}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">{text(about_cards[1].get("subtitle", ""))}</text></g><g transform="translate(400,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">{text(projects[0]["name"])}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">精选项目</text></g><g transform="translate(596,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">{text(projects[0].get("language") or "项目")}</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">项目语言</text></g><g transform="translate(792,0)"><rect width="180" height="64" rx="18" fill="#1E293B" stroke="#334155"/><text x="40" y="29" fill="#F8FAFC">GitHub</text><text x="40" y="51" font-size="14" font-weight="500" fill="#94A3B8">持续维护</text></g></g></svg>
     ''',
     )
 
@@ -295,14 +346,9 @@ def main():
 ''',
         )
 
-    tech_badges = (
-        ("C++", "#60A5FA"),
-        ("Qt", "#38BDF8"),
-        ("Python", "#F59E0B"),
-        ("CMake", "#34D399"),
-        ("Linux", "#64748B"),
-        ("VS Code", "#A78BFA"),
-        ("Git", "#22D3EE"),
+    tech_badges = tuple(
+        (item["label"], item.get("color", "#60A5FA"))
+        for item in CONFIG.get("tech_stack", [])
     )
     badge_groups = []
     badge_x = 250
@@ -327,6 +373,7 @@ def main():
 ''',
     )
     section_asset("section-live-widgets.svg", "实时数据", "个人主页数据由 GitHub Actions 自动生成")
+    render_readme(CONFIG)
 
 
 if __name__ == "__main__":

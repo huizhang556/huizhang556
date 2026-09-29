@@ -1,0 +1,48 @@
+{
+  "username": "huizhang556",
+  "display_name": "Selina Martin",
+  "bio": "你好，我是 Selina Martin，一名 C++/Qt 开发程序员。",
+  "gitee_url": "https://gitee.com/huizhang556",
+  "telegram": {
+    "label": "@changfai666",
+    "url": "https://t.me/changfai666"
+  },
+  "typing_lines": [
+    "C++ / Qt developer",
+    "Python automation enthusiast",
+    "Open source enthusiast"
+  ],
+  "about": {
+    "headline": "C++ / Qt 开发者，专注桌面应用与自动化工具",
+    "motto": "世上无难事，只怕有心人。",
+    "cards": [
+      {"icon": "C++", "title": "C++ / Qt", "subtitle": "桌面应用开发", "color": "#60A5FA"},
+      {"icon": "PY", "title": "Python", "subtitle": "脚本与自动化", "color": "#F59E0B"},
+      {"icon": "WEB", "title": "多端开发", "subtitle": "Web / Android / 微信", "color": "#A78BFA"},
+      {"icon": "AI", "title": "AI 工具", "subtitle": "效率与开发辅助", "color": "#34D399"}
+    ]
+  },
+  "tech_stack": [
+    {"label": "C++", "color": "#60A5FA"},
+    {"label": "Qt", "color": "#38BDF8"},
+    {"label": "Python", "color": "#F59E0B"},
+    {"label": "CMake", "color": "#34D399"},
+    {"label": "Linux", "color": "#64748B"},
+    {"label": "VS Code", "color": "#A78BFA"},
+    {"label": "Git", "color": "#22D3EE"}
+  ],
+  "featured_projects": [
+    {"repo": "huizhang556/pc-video-player", "asset": "pinned-pc-video-player.svg"},
+    {"repo": "huizhang556/vx_data_watch", "asset": "pinned-bbdown.svg"}
+  ],
+  "theme": {
+    "background": "#111827",
+    "panel": "#1E293B",
+    "border": "#334155",
+    "text": "#F8FAFC",
+    "muted": "#CBD5E1",
+    "subtle": "#94A3B8",
+    "accent": "#22D3EE",
+    "chart": ["#A78BFA", "#60A5FA", "#F59E0B", "#34D399", "#22D3EE", "#64748B"]
+  }
+}
