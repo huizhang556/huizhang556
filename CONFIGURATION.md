@@ -13,6 +13,20 @@
 
 ## 配置文件
 
+### `README.template.md` 的作用
+
+`README.template.md` 是个人主页的“版式模板”，不是 GitHub 最终展示的主页文件。它保存主页的固定结构和占位符，例如：
+
+- `{{USERNAME}}`：替换为 GitHub 用户名
+- `{{DISPLAY_NAME}}`：替换为显示名称
+- `{{PROJECT_SECTIONS}}`：替换为配置中的精选项目卡片
+- `{{GITEE_BLOCK}}`：根据 Gitee 配置生成链接或普通 Hero 图片
+- `{{TELEGRAM_BLOCK}}`：根据 Telegram 配置生成联系项
+
+脚本会把 `README.template.md`、`profile.config.json` 和 GitHub API 数据合并，生成最终的 `README.md`。GitHub 个人主页实际读取的是生成后的 `README.md`。
+
+因此，修改主页结构时应该修改 `README.template.md`；修改账号、项目和个人信息时应该修改 `profile.config.json`。不要直接修改生成后的 `README.md`，因为下一次运行脚本或 GitHub Actions 时会被重新生成并覆盖。
+
 ### 必填配置
 
 - `username`：GitHub 用户名，同时也是主页仓库名。
