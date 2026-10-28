@@ -64,16 +64,32 @@
 
 ## 生成方式
 
-本地生成：
+### 推荐方式：推送后自动生成
+
+修改 `profile.config.json` 后，直接提交并推送到 `main` 分支：
+
+```powershell
+git add profile.config.json README.template.md
+git commit -m "configure profile"
+git push origin main
+```
+
+`profile-assets.yml` 会在推送后自动运行，读取配置和 GitHub API 数据，生成并提交：
+
+- `README.md`
+- `assets/readme/*.svg`
+
+因此，正常使用时不需要手动运行 Python 脚本。
+
+### 可选方式：本地预览或排错
+
+本地命令只用于在推送前检查生成结果，或者排查 GitHub Actions 问题：
 
 ```powershell
 python scripts/update_profile_assets.py
 ```
 
-生成器会更新：
-
-- `README.md`
-- `assets/readme/*.svg`
+本地运行需要网络访问 GitHub API；如果未设置 `GITHUB_TOKEN`，可能受到 API 匿名访问额度限制。
 
 `README.md` 和 SVG 是生成文件，应该修改配置或 `README.template.md`，不要直接修改生成结果。
 
