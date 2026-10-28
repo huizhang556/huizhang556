@@ -93,13 +93,3 @@ python scripts/update_profile_assets.py
 
 `README.md` 和 SVG 是生成文件，应该修改配置或 `README.template.md`，不要直接修改生成结果。
 
-## 两个 GitHub 账号
-
-同一份代码可以服务多个账号，但每个账号必须使用独立的仓库和独立的配置：
-
-```text
-账号 A -> alice/alice -> profile.config.json 中 username=alice
-账号 B -> bob/bob     -> profile.config.json 中 username=bob
-```
-
-不要让两个账号共用同一个远程仓库，否则工作流会把账号 A 和账号 B 的数据互相覆盖。推荐为每个账号复制一份仓库，分别修改配置并分别推送。
