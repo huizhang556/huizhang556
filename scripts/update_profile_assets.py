@@ -2,6 +2,7 @@ import html
 from http.client import IncompleteRead
 import json
 import os
+import re
 import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -24,6 +25,8 @@ def load_config():
     missing = [key for key in required if not config.get(key)]
     if missing:
         raise ValueError(f"Missing required profile config fields: {', '.join(missing)}")
+    if not re.fullmatch(r"[A-Za-z0-9-]+", config["username"]):
+        raise ValueError("username must contain only letters, numbers, and hyphens")
     if not isinstance(config["featured_projects"], list):
         raise ValueError("featured_projects must be a list")
     if not config["featured_projects"]:
@@ -31,7 +34,24 @@ def load_config():
     for project in config["featured_projects"]:
         if not project.get("repo") or not project.get("asset"):
             raise ValueError("Each featured project needs repo and asset")
+        if not re.fullmatch(r"[^/\\s]+/[^/\\s]+", project["repo"]):
+            raise ValueError(f"Invalid featured project repo: {project['repo']}")
+        if Path(project["asset"]).name != project["asset"] or not project["asset"].endswith(".svg"):
+            raise ValueError(f"Invalid featured project asset: {project['asset']}")
+    validate_colors(config)
     return config
+
+
+def validate_colors(config):
+    color_pattern = re.compile(r"#[0-9A-Fa-f]{6}")
+    theme = config.get("theme", {})
+    theme_colors = [theme.get(key) for key in ("background", "panel", "border", "text", "muted", "subtle", "accent")]
+    theme_colors.extend(theme.get("chart", []))
+    theme_colors.extend(item.get("color") for item in config.get("tech_stack", []))
+    theme_colors.extend(item.get("color") for item in config.get("about", {}).get("cards", []))
+    invalid = [color for color in theme_colors if color and not color_pattern.fullmatch(color)]
+    if invalid:
+        raise ValueError(f"Invalid theme color(s), expected #RRGGBB: {', '.join(invalid)}")
 
 
 def get_json(url):
@@ -105,12 +125,24 @@ def write_asset(name, content):
 
 def render_readme(config):
     template = (ROOT / "README.template.md").read_text(encoding="utf-8")
+    gitee_url = config.get("gitee_url", "").strip()
+    telegram = config.get("telegram", {})
+    telegram_label = str(telegram.get("label", "")).strip()
+    telegram_url = str(telegram.get("url", "")).strip()
     replacements = {
         "{{USERNAME}}": text(config["username"]),
         "{{DISPLAY_NAME}}": text(config["display_name"]),
-        "{{GITEE_URL}}": text(config.get("gitee_url", "")),
-        "{{TELEGRAM_LABEL}}": text(config.get("telegram", {}).get("label", "")),
-        "{{TELEGRAM_URL}}": text(config.get("telegram", {}).get("url", "")),
+        "{{GITEE_URL}}": text(gitee_url),
+        "{{GITEE_BLOCK}}": (
+            f'<a href="{text(gitee_url)}"><img src="./assets/readme/hero.svg" width="100%" alt="{text(config["display_name"])} profile banner"></a>'
+            if gitee_url
+            else f'<img src="./assets/readme/hero.svg" width="100%" alt="{text(config["display_name"])} profile banner">'
+        ),
+        "{{TELEGRAM_BLOCK}}": (
+            f'- Telegram：[{text(telegram_label)}]({text(telegram_url)})'
+            if telegram_label and telegram_url
+            else ""
+        ),
         "{{BIO}}": text(config.get("bio", "")),
         "{{TYPING_LINES}}": ";".join(
             quote(str(line), safe="") for line in config.get("typing_lines", [])
@@ -146,6 +178,8 @@ def get_public_repos():
 
 
 def write_project_card(project, filename):
+    if project.get("private", False):
+        raise ValueError(f"Refusing to publish data from private repository: {project.get('full_name', project.get('name', 'unknown'))}")
     project_languages = get_json(project["languages_url"])
     project_description_lines = truncate_lines(
         project.get("description") or "暂无项目描述", line_limit=22, max_lines=2
@@ -228,8 +262,6 @@ def main():
     repos = get_public_repos()
     original_repos = [repo for repo in repos if not repo.get("fork", False)]
     projects = [get_json(f"https://api.github.com/repos/{project['repo']}") for project in CONFIG["featured_projects"]]
-    project = projects[-1]
-
     total_stars = sum(repo.get("stargazers_count", 0) for repo in repos)
     languages = {}
     for repo in original_repos:
@@ -260,7 +292,7 @@ def main():
     <text class="sans" font-size="22" font-weight="600" fill="#7DD3FC">你好，我是</text>
     <text class="sans" y="72" font-size="64" font-weight="750" fill="#F8FAFC">{text(DISPLAY_NAME)}</text>
     <text class="sans" y="126" font-size="28" fill="#CBD5E1">{text(about.get("headline", ""))}</text>
-    <text class="sans" y="174" font-size="22" font-weight="650" fill="#22D3EE" text-decoration="underline">同步主页 : {text(CONFIG.get("gitee_url", ""))}</text>
+    {f'<text class="sans" y="174" font-size="22" font-weight="650" fill="#22D3EE" text-decoration="underline">同步主页 : {text(CONFIG.get("gitee_url", ""))}</text>' if CONFIG.get("gitee_url", "").strip() else ''}
   </g>
   <g transform="translate(810,64)">
     <rect width="340" height="180" rx="26" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>

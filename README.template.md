@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="{{GITEE_URL}}">
-    <img src="./assets/readme/hero.svg" width="100%" alt="{{DISPLAY_NAME}} profile banner">
-  </a>
+  {{GITEE_BLOCK}}
 </p>
 
 <p align="center">
@@ -65,4 +63,4 @@
 ## 联系我
 
 - GitHub：[{{USERNAME}}](https://github.com/{{USERNAME}})
-- Telegram：[{{TELEGRAM_LABEL}}]({{TELEGRAM_URL}})
+{{TELEGRAM_BLOCK}}

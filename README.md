@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://gitee.com/huizhang556">
-    <img src="./assets/readme/hero.svg" width="100%" alt="Selina Martin profile banner">
-  </a>
+  <a href="https://gitee.com/huizhang556"><img src="./assets/readme/hero.svg" width="100%" alt="Selina Martin profile banner"></a>
 </p>
 
 <p align="center">
